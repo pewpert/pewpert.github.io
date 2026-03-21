@@ -2,16 +2,18 @@
    Design Tokens
    ============================================================ */
 :root {
-  --bg:      #F2EDE4;
-  --ink:     #0E0D0B;
-  --accent:  #C24A28;
-  --muted:   #8A8076;
-  --rule:    #DDD8CF;
-  --number:  rgba(14, 13, 11, 0.055);
+  --bg:      #0D0D12;
+  --surface: #16161E;
+  --ink:     #EDEAE4;
+  --accent:  #E8573A;
+  --accent2: #5B8FEB;
+  --muted:   #707086;
+  --rule:    #25252F;
 
-  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --sans:  'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --mono:  'DM Mono', 'Courier New', monospace;
+  /* Keeping "serif" var name for compatibility; now mapped to Outfit display */
+  --serif: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono:  'JetBrains Mono', 'Courier New', monospace;
 
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -26,7 +28,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 18px;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -64,8 +66,8 @@ a {
 
 .site-initials {
   font-family: var(--serif);
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 800;
   letter-spacing: 0.04em;
   color: var(--ink);
   pointer-events: all;
@@ -78,10 +80,10 @@ a {
 
 .site-role {
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 400;
-  letter-spacing: 0.08em;
-  color: var(--muted);
+  letter-spacing: 0.1em;
+  color: #6E6E86;
   text-transform: uppercase;
 }
 
@@ -113,12 +115,12 @@ a {
 }
 
 .dot-nav__dot:hover {
-  background: var(--muted);
+  background: #6E6E86;
   transform: scale(1.4);
 }
 
 .dot-nav__dot.is-active {
-  background: var(--ink);
+  background: var(--accent);
   transform: scale(1.3);
 }
 
@@ -145,11 +147,11 @@ a {
    ============================================================ */
 .label {
   font-family: var(--mono);
-  font-size: 0.68rem;
-  font-weight: 400;
-  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #6E6E86;
   display: block;
   margin-bottom: 1.5rem;
 }
@@ -159,13 +161,16 @@ a {
    ============================================================ */
 .section--about {
   justify-content: center;
+  background:
+    radial-gradient(ellipse at 70% 50%, rgba(91, 143, 235, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 80%, rgba(232, 87, 58, 0.05) 0%, transparent 50%);
 }
 
 .about__inner {
   display: flex;
   align-items: center;
-  gap: 4rem;
-  max-width: 900px;
+  gap: 4.5rem;
+  max-width: 960px;
   width: 100%;
 }
 
@@ -176,36 +181,37 @@ a {
   object-fit: cover;
   flex-shrink: 0;
   border: 2px solid var(--rule);
+  filter: grayscale(15%);
 }
 
 .about__text-col {
-  max-width: 480px;
+  max-width: 520px;
 }
 
 .about__name {
   font-family: var(--serif);
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   color: var(--ink);
   margin-bottom: 1.25rem;
 }
 
 .about__summary {
-  font-size: clamp(0.92rem, 1.3vw, 1rem);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   font-weight: 400;
-  line-height: 1.8;
-  color: var(--ink);
+  line-height: 1.85;
+  color: rgba(237, 234, 228, 0.8);
   max-width: 52ch;
   margin-bottom: 0.9rem;
 }
 
 .about__goal {
-  font-size: clamp(0.9rem, 1.2vw, 0.98rem);
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
   font-weight: 400;
-  line-height: 1.75;
-  color: var(--muted);
+  line-height: 1.8;
+  color: #6E6E86;
   max-width: 52ch;
   margin-bottom: 2rem;
 }
@@ -223,7 +229,7 @@ a {
 .scroll-hint__line {
   width: 2.5rem;
   height: 1px;
-  background: var(--muted);
+  background: #6E6E86;
   transform-origin: left;
   animation: line-pulse 2.4s var(--ease) infinite;
 }
@@ -233,7 +239,7 @@ a {
   font-size: 0.65rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: #6E6E86;
 }
 
 @keyframes line-pulse {
@@ -258,7 +264,7 @@ a {
 }
 
 .projects-label .label {
-  color: rgba(242, 237, 228, 0.45);
+  color: rgba(237, 234, 228, 0.3);
   margin-bottom: 0;
 }
 
@@ -300,39 +306,40 @@ a {
 
 /* Card 01: terminal / code aesthetic */
 .project-card__bg--01 {
-  background-color: #0d1117;
+  background-color: #060D0F;
   background-image:
     repeating-linear-gradient(
-      transparent 0px, transparent 19px,
-      rgba(35, 134, 54, 0.1) 19px, rgba(35, 134, 54, 0.1) 20px
+      transparent 0px, transparent 23px,
+      rgba(35, 200, 80, 0.07) 23px, rgba(35, 200, 80, 0.07) 24px
     ),
     repeating-linear-gradient(
       90deg,
-      transparent 0px, transparent 59px,
-      rgba(35, 134, 54, 0.04) 59px, rgba(35, 134, 54, 0.04) 60px
-    );
+      transparent 0px, transparent 79px,
+      rgba(35, 200, 80, 0.04) 79px, rgba(35, 200, 80, 0.04) 80px
+    ),
+    radial-gradient(ellipse at 75% 50%, rgba(35, 200, 80, 0.06) 0%, transparent 55%);
 }
 
 /* Card 02: map / travel aesthetic */
 .project-card__bg--02 {
-  background-color: #080f1e;
+  background-color: #05091A;
   background-image:
-    linear-gradient(rgba(14, 100, 200, 0.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(14, 100, 200, 0.14) 1px, transparent 1px),
-    radial-gradient(circle at 65% 50%, rgba(14, 100, 200, 0.08) 0%, transparent 60%);
-  background-size: 48px 48px, 48px 48px, 100% 100%;
+    linear-gradient(rgba(91, 143, 235, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 143, 235, 0.12) 1px, transparent 1px),
+    radial-gradient(circle at 65% 50%, rgba(91, 143, 235, 0.1) 0%, transparent 60%);
+  background-size: 52px 52px, 52px 52px, 100% 100%;
 }
 
-/* Directional overlay: dark on left (text), fades right */
+/* Directional overlay */
 .project-card__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(10, 10, 10, 0.94) 0%,
-    rgba(10, 10, 10, 0.78) 38%,
-    rgba(10, 10, 10, 0.35) 65%,
-    rgba(10, 10, 10, 0.1)  100%
+    rgba(5, 5, 10, 0.97) 0%,
+    rgba(5, 5, 10, 0.85) 35%,
+    rgba(5, 5, 10, 0.4) 62%,
+    rgba(5, 5, 10, 0.1) 100%
   );
 }
 
@@ -340,39 +347,39 @@ a {
 .project-card__body {
   position: relative;
   z-index: 1;
-  padding: 0 4rem;
-  max-width: 560px;
+  padding: 0 4.5rem;
+  max-width: 600px;
 }
 
 .project-card__number {
   display: block;
   font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
   color: var(--accent);
   margin-bottom: 0.6rem;
 }
 
 .project-card__body .label {
-  color: rgba(242, 237, 228, 0.5);
+  color: rgba(237, 234, 228, 0.45);
 }
 
 .project-card__title {
   font-family: var(--serif);
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  font-weight: 700;
-  line-height: 1.0;
-  letter-spacing: -0.02em;
-  color: #F2EDE4;
+  font-size: clamp(3.4rem, 7vw, 6.5rem);
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  color: #EDEAE4;
   margin-bottom: 1.5rem;
 }
 
 .project-card__excerpt {
-  font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
   font-weight: 400;
-  line-height: 1.8;
-  color: rgba(242, 237, 228, 0.65);
-  max-width: 40ch;
+  line-height: 1.85;
+  color: rgba(237, 234, 228, 0.6);
+  max-width: 42ch;
   margin-bottom: 2.5rem;
 }
 
@@ -382,16 +389,16 @@ a {
   top: 5.5rem;
   right: 3rem;
   font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  color: rgba(242, 237, 228, 0.35);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  color: rgba(237, 234, 228, 0.25);
   z-index: 10;
 }
 
 /* CTA variant for dark cards */
 .cta-link--light {
-  color: #F2EDE4;
-  border-bottom-color: rgba(242, 237, 228, 0.5);
+  color: #EDEAE4;
+  border-bottom-color: rgba(237, 234, 228, 0.35);
 }
 
 .cta-link--light:hover {
@@ -403,7 +410,7 @@ a {
 .carousel-nav {
   position: absolute;
   bottom: 2.5rem;
-  left: 4rem;
+  left: 4.5rem;
   display: flex;
   align-items: center;
   gap: 1.25rem;
@@ -412,10 +419,10 @@ a {
 
 .carousel-nav__btn {
   background: none;
-  border: 1px solid rgba(242, 237, 228, 0.25);
-  color: rgba(242, 237, 228, 0.7);
-  width: 2.25rem;
-  height: 2.25rem;
+  border: 1px solid rgba(237, 234, 228, 0.2);
+  color: rgba(237, 234, 228, 0.55);
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -431,9 +438,9 @@ a {
 }
 
 .carousel-nav__btn:hover {
-  background: rgba(242, 237, 228, 0.1);
-  border-color: rgba(242, 237, 228, 0.55);
-  color: #F2EDE4;
+  background: rgba(237, 234, 228, 0.08);
+  border-color: rgba(237, 234, 228, 0.5);
+  color: #EDEAE4;
 }
 
 .carousel-nav__dots {
@@ -446,7 +453,7 @@ a {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: rgba(242, 237, 228, 0.28);
+  background: rgba(237, 234, 228, 0.22);
   border: none;
   cursor: pointer;
   padding: 0;
@@ -454,7 +461,7 @@ a {
 }
 
 .carousel-dot.is-active {
-  background: #F2EDE4;
+  background: var(--accent);
   transform: scale(1.4);
 }
 
@@ -464,13 +471,13 @@ a {
   align-items: center;
   gap: 0.75rem;
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink);
   padding-bottom: 0.2rem;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid rgba(237, 234, 228, 0.35);
   transition: color 0.3s var(--ease), border-color 0.3s var(--ease), gap 0.3s var(--ease);
 }
 
@@ -528,8 +535,8 @@ a {
   }
 
   .about__photo {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
   }
 
   .about__summary,
@@ -542,7 +549,7 @@ a {
   }
 
   .project-card__body {
-    padding: 0 1.75rem;
+    padding: 0 2rem;
     max-width: 100%;
   }
 
@@ -551,16 +558,16 @@ a {
   }
 
   .carousel-nav {
-    left: 1.75rem;
+    left: 2rem;
     bottom: 2rem;
   }
 
   .project-card__overlay {
     background: linear-gradient(
       to bottom,
-      rgba(10, 10, 10, 0.88) 0%,
-      rgba(10, 10, 10, 0.75) 50%,
-      rgba(10, 10, 10, 0.55) 100%
+      rgba(5, 5, 10, 0.95) 0%,
+      rgba(5, 5, 10, 0.8) 50%,
+      rgba(5, 5, 10, 0.6) 100%
     );
   }
 }
