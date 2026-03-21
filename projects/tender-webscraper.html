@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tender Webscraper — Daniel Chew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/project.css" />
+</head>
+<body>
+
+  <a href="../index.html" class="back-link">
+    <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M24 4H2M5 1L2 4l3 3" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
+    <span>All Projects</span>
+  </a>
+
+  <article class="project-page">
+
+    <header class="project-header">
+      <div class="project-header__meta">
+        <span class="project-header__number">01</span>
+        <span class="project-header__category">Automation · Python · Logistics</span>
+      </div>
+      <h1 class="project-header__title">Automated Tender<br />Webscraper</h1>
+      <p class="project-header__tagline">
+        Eliminating a daily manual chore — so the team could focus on the deals
+        worth winning.
+      </p>
+    </header>
+
+    <!-- ── The What ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">The What</h2>
+      <div class="project-section__body">
+        <p>
+          A Python-based webscraper built for the Business Development team at
+          ST Logistics. It runs on a daily schedule, scans public tender portals
+          for newly posted opportunities, filters them against relevance criteria,
+          and compiles the results into a structured output ready for review.
+        </p>
+        <p>
+          Before this, a member of the team spent part of every morning manually
+          loading the same pages, cross-referencing entries, and copying data into
+          a spreadsheet. The scraper reduced that to zero — the data is there when
+          they arrive.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── The Why ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">The Why</h2>
+      <div class="project-section__body">
+        <p>
+          Repetitive data collection is an obvious automation target — but it is
+          surprisingly easy to leave it untouched because "it only takes ten
+          minutes." Over a year, those ten minutes become days. More importantly,
+          it's the kind of task that competes with higher-value thinking during
+          the exact window when focus matters most.
+        </p>
+        <p>
+          I built this as part of my work in the BD team at ST Logistics
+          (Jan–Apr 2025). The goal was not just efficiency, but reliability:
+          no missed tenders due to a busy morning, no inconsistent filtering
+          depending on who ran the check.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── What I Learned ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">What I Learned</h2>
+      <ul class="learning-list">
+        <li class="learning-list__item" data-n="01">
+          <p>
+            <strong>Scraper fragility is the real maintenance cost.</strong>
+            HTML structures change without warning. I built in lightweight
+            structural checks that alert rather than silently return empty
+            results, so a site change gets caught immediately instead of two
+            weeks later.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="02">
+          <p>
+            <strong>The output format matters as much as the data.</strong>
+            A raw dump is as bad as no automation. I worked with the team to
+            understand how they actually use the shortlist — and structured
+            the output around their existing Excel workflow so adoption was
+            instant.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="03">
+          <p>
+            <strong>Automation earns trust by being predictable.</strong>
+            The team needed to know the tool ran and what it found, even on
+            days with zero relevant tenders. A clear "nothing new today"
+            signal is more useful than silence.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="project-footer">
+      <span class="project-footer__label">01 / 03</span>
+      <nav class="project-footer__nav">
+        <a href="logistics-deployment.html">Next Project →</a>
+        <a href="../index.html">All Projects</a>
+      </nav>
+    </footer>
+
+  </article>
+
+</body>
+</html>
