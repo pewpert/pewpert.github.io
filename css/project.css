@@ -1,19 +1,22 @@
 /* ============================================================
-   Project Detail Page Styles
+   Project Detail Page Styles — "The Operator"
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;1,14..32,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --bg:      #0D0D12;
-  --surface: #16161E;
-  --ink:     #EDEAE4;
-  --accent:  #E8573A;
-  --muted:   #707086;
-  --rule:    #25252F;
+  --bg:        #090C15;
+  --surface:   #0F1220;
+  --ink:       #E4E0D6;
+  --accent:    #E8573A;
+  --blue:      #4FACFE;
+  --muted:     #5A6070;
+  --rule:      #1A1E2C;
+  --rule-lt:   #252A3A;
 
-  --serif: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --mono:  'JetBrains Mono', 'Courier New', monospace;
+  --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --serif:   'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:    'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono:    'JetBrains Mono', 'Courier New', monospace;
 
   --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -32,9 +35,21 @@ body {
   background-color: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
-  font-weight: 400;
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
 }
 
 a {
@@ -46,11 +61,11 @@ a {
 .back-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
   padding: 2rem 3rem;
@@ -58,14 +73,14 @@ a {
 }
 
 .back-link svg {
-  width: 1.3rem;
+  width: 1.25rem;
   height: auto;
   transition: transform 0.3s var(--ease);
 }
 
 .back-link:hover {
-  color: var(--ink);
-  gap: 0.85rem;
+  color: var(--accent);
+  gap: 0.9rem;
 }
 
 .back-link:hover svg {
@@ -84,6 +99,19 @@ a {
   padding-bottom: 3.5rem;
   border-bottom: 1px solid var(--rule);
   margin-bottom: 4rem;
+  position: relative;
+}
+
+/* Subtle blueprint grid behind header */
+.project-header::before {
+  content: '';
+  position: absolute;
+  inset: -2rem -3rem;
+  background-image:
+    repeating-linear-gradient(rgba(79, 172, 254, 0.025) 1px, transparent 1px),
+    repeating-linear-gradient(90deg, rgba(79, 172, 254, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
 }
 
 .project-header__meta {
@@ -91,43 +119,46 @@ a {
   align-items: baseline;
   gap: 2rem;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .project-header__number {
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   color: var(--accent);
 }
 
 .project-header__category {
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
 .project-header__title {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(3rem, 7vw, 6rem);
-  font-weight: 800;
+  font-weight: 300;
   line-height: 1.0;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: var(--ink);
-  margin-bottom: 1.75rem;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
 .project-header__tagline {
-  font-family: var(--sans);
+  font-family: var(--display);
   font-style: italic;
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  font-weight: 400;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 300;
   color: var(--muted);
   max-width: 52ch;
   line-height: 1.75;
+  position: relative;
 }
 
 /* ── Content Sections ──────────────────────── */
@@ -137,15 +168,15 @@ a {
 
 .project-section__heading {
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .project-section__heading::after {
@@ -157,14 +188,14 @@ a {
 
 .project-section__body {
   font-size: clamp(1rem, 1.4vw, 1.1rem);
-  font-weight: 400;
-  line-height: 1.9;
-  color: rgba(237, 234, 228, 0.8);
+  font-weight: 300;
+  line-height: 1.95;
+  color: rgba(228, 224, 214, 0.78);
   max-width: 68ch;
 }
 
 .project-section__body p + p {
-  margin-top: 1.25em;
+  margin-top: 1.3em;
 }
 
 /* ── Learning Points ───────────────────────── */
@@ -172,35 +203,43 @@ a {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 2rem;
   max-width: 68ch;
 }
 
 .learning-list__item {
   display: grid;
-  grid-template-columns: 1.6rem 1fr;
-  gap: 0 1rem;
+  grid-template-columns: 1.8rem 1fr;
+  gap: 0 1.1rem;
   align-items: start;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.learning-list__item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .learning-list__item::before {
   content: attr(data-n);
   font-family: var(--mono);
-  font-size: 0.68rem;
+  font-size: 0.62rem;
+  font-weight: 500;
   color: var(--accent);
-  padding-top: 0.3em;
-  letter-spacing: 0.06em;
+  padding-top: 0.35em;
+  letter-spacing: 0.08em;
 }
 
 .learning-list__item p {
   font-size: clamp(1rem, 1.3vw, 1.05rem);
-  font-weight: 400;
-  line-height: 1.85;
-  color: rgba(237, 234, 228, 0.8);
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(228, 224, 214, 0.78);
 }
 
 .learning-list__item strong {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--ink);
 }
 
@@ -218,8 +257,8 @@ a {
 
 .project-footer__label {
   font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -231,9 +270,9 @@ a {
 
 .project-footer__nav a {
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
   transition: color 0.3s var(--ease);

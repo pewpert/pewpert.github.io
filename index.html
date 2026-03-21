@@ -6,7 +6,7 @@
   <title>Daniel Chew — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;1,14..32,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -26,22 +26,22 @@
     <!-- ── About ──────────────────────────────────── -->
     <section class="section section--about" data-index="0">
       <div class="about__inner">
-        <img src="img/profile.jpg" alt="Daniel Chew" class="about__photo" />
+        <img src="img/profile.jpg" alt="Daniel Chew" class="about__photo animate-in" style="animation-delay:0.05s" />
         <div class="about__text-col">
-          <p class="label">About</p>
-          <h2 class="about__name">Daniel Chew</h2>
-          <p class="about__summary">
+          <p class="label animate-in" style="animation-delay:0.1s">About</p>
+          <h2 class="about__name animate-in" style="animation-delay:0.25s">Daniel Chew</h2>
+          <p class="about__summary animate-in" style="animation-delay:0.45s">
             Business Development Manager specialising in the delivery of complex
             technical solutions at the intersection of Gen AI and Logistics. With a
             background in Industrial Engineering (NUS), I help companies navigate the
             "implementation gap" — ensuring advanced technology actually solves
             operational pain points for the end-user.
           </p>
-          <p class="about__goal">
+          <p class="about__goal animate-in" style="animation-delay:0.6s">
             Currently based in Singapore, relocating to Tokyo in 2026 — eager to
             apply experience in DX and AI to help Japanese tech firms scale their operations.
           </p>
-          <a href="https://linkedin.com/in/daniel-chew-yu" class="cta-link" target="_blank" rel="noopener">
+          <a href="https://linkedin.com/in/daniel-chew-yu" class="cta-link animate-in" style="animation-delay:0.75s" target="_blank" rel="noopener">
             <span>LinkedIn</span>
             <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M0 4H22M19 1l3 3-3 3" stroke="currentColor" stroke-width="1.2"/>
@@ -64,7 +64,7 @@
         <div class="project-card" data-card="0">
           <div class="project-card__bg project-card__bg--01" aria-hidden="true"></div>
           <div class="project-card__overlay" aria-hidden="true"></div>
-          <div class="project-card__body">
+          <div class="project-card__body" data-watermark="01">
             <span class="project-card__number">01</span>
             <p class="label">Automation · Python · Logistics</p>
             <h2 class="project-card__title">Tender<br />Webscraper</h2>
@@ -86,7 +86,7 @@
         <div class="project-card" data-card="1">
           <div class="project-card__bg project-card__bg--02" aria-hidden="true"></div>
           <div class="project-card__overlay" aria-hidden="true"></div>
-          <div class="project-card__body">
+          <div class="project-card__body" data-watermark="02">
             <span class="project-card__number">02</span>
             <p class="label">Next.js · TypeScript · Claude API</p>
             <h2 class="project-card__title">Japan Bike<br />Trip Planner</h2>
