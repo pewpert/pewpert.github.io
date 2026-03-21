@@ -22,6 +22,8 @@
           currentIdx = idx;
           dots.forEach((d) => d.classList.remove('is-active'));
           if (dots[idx]) dots[idx].classList.add('is-active');
+          // Reveal the active project card when projects section enters view
+          if (idx === 1) revealCard(currentCard);
         }
       });
     },
@@ -37,11 +39,20 @@
   });
 
   /* ── Carousel ── */
+  function revealCard(idx) {
+    cards.forEach((c, i) => {
+      if (i === idx && !c.classList.contains('is-visible')) {
+        c.classList.add('is-visible');
+      }
+    });
+  }
+
   function goToCard(idx) {
     if (!cards.length) return;
     currentCard = Math.max(0, Math.min(idx, cards.length - 1));
     cards[currentCard].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     carouselDots.forEach((d, i) => d.classList.toggle('is-active', i === currentCard));
+    revealCard(currentCard);
   }
 
   document.getElementById('carousel-prev')?.addEventListener('click', () => goToCard(currentCard - 1));
@@ -58,6 +69,7 @@
       if (newCard !== currentCard) {
         currentCard = newCard;
         carouselDots.forEach((d, i) => d.classList.toggle('is-active', i === currentCard));
+        revealCard(currentCard);
       }
     }, { passive: true });
   }
