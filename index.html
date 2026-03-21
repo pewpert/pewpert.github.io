@@ -6,7 +6,7 @@
   <title>Daniel Chew — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -18,20 +18,49 @@
 
   <!-- Vertical scroll position indicator -->
   <nav class="dot-nav" aria-label="Section navigation">
-    <button class="dot-nav__dot is-active" data-target="0" aria-label="Introduction"></button>
-    <button class="dot-nav__dot" data-target="1" aria-label="Project 01"></button>
+    <button class="dot-nav__dot is-active" data-target="0" aria-label="About"></button>
+    <button class="dot-nav__dot" data-target="1" aria-label="Projects"></button>
+    <button class="dot-nav__dot" data-target="2" aria-label="Project 01"></button>
   </nav>
 
   <main class="scroll-container" id="scroll-container">
 
+    <!-- ── About ──────────────────────────────────── -->
+    <section class="section section--about" data-index="0">
+      <div class="about__inner">
+        <img src="img/profile.jpg" alt="Daniel Chew" class="about__photo" />
+        <div class="about__text-col">
+          <p class="label">About</p>
+          <h2 class="about__name">Daniel Chew</h2>
+          <p class="about__summary">
+            Business Development Manager specialising in the delivery of complex
+            technical solutions at the intersection of Gen AI and Logistics. With a
+            background in Industrial Engineering (NUS), I help companies navigate the
+            "implementation gap" — ensuring advanced technology actually solves
+            operational pain points for the end-user.
+          </p>
+          <p class="about__goal">
+            Currently based in Singapore, relocating to Tokyo in 2026 — eager to
+            apply experience in DX and AI to help Japanese tech firms scale their operations.
+          </p>
+          <a href="https://linkedin.com/in/daniel-chew-yu" class="cta-link" target="_blank" rel="noopener">
+            <span>LinkedIn</span>
+            <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M0 4H22M19 1l3 3-3 3" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ── Hero ──────────────────────────────────── -->
-    <section class="section section--hero" data-index="0">
+    <section class="section section--hero" data-index="1">
       <div class="hero__inner">
-        <p class="label">Daniel Chew · Singapore → Tokyo 2026</p>
+        <p class="label">Selected work</p>
         <h1 class="hero__title">Projects.</h1>
         <p class="hero__sub">
-          Bridging the gap between advanced technology<br class="br-desktop" />
-          and the operational realities that matter.
+          Each one is a record of a problem I wanted<br class="br-desktop" />
+          to understand — and what I found along the way.
         </p>
       </div>
       <div class="scroll-hint">
@@ -41,7 +70,7 @@
     </section>
 
     <!-- ── Project 01 ─────────────────────────────── -->
-    <section class="section section--project" data-index="1">
+    <section class="section section--project" data-index="2">
       <div class="project__watermark" aria-hidden="true">01</div>
       <div class="project__content">
         <span class="label">Automation · Python · Logistics</span>
