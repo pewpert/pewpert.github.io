@@ -16,12 +16,9 @@
     <span class="site-role">BizDev · Gen AI · Logistics DX</span>
   </header>
 
-  <!-- Vertical scroll position indicator -->
   <nav class="dot-nav" aria-label="Section navigation">
     <button class="dot-nav__dot is-active" data-target="0" aria-label="About"></button>
     <button class="dot-nav__dot" data-target="1" aria-label="Projects"></button>
-    <button class="dot-nav__dot" data-target="2" aria-label="Project 01"></button>
-    <button class="dot-nav__dot" data-target="3" aria-label="Project 02"></button>
   </nav>
 
   <main class="scroll-container" id="scroll-container">
@@ -52,60 +49,86 @@
           </a>
         </div>
       </div>
-    </section>
-
-    <!-- ── Hero ──────────────────────────────────── -->
-    <section class="section section--hero" data-index="1">
-      <div class="hero__inner">
-        <p class="label">Selected work</p>
-        <h1 class="hero__title">Projects.</h1>
-        <p class="hero__sub">
-          Each one is a record of a problem I wanted<br class="br-desktop" />
-          to understand — and what I found along the way.
-        </p>
-      </div>
       <div class="scroll-hint">
         <div class="scroll-hint__line"></div>
         <span class="scroll-hint__text">Scroll</span>
       </div>
     </section>
 
-    <!-- ── Project 01 ─────────────────────────────── -->
-    <section class="section section--project" data-index="2">
-      <div class="project__watermark" aria-hidden="true">01</div>
-      <div class="project__content">
-        <span class="label">Automation · Python · Logistics</span>
-        <h2 class="project__title">Tender<br />Webscraper</h2>
-        <p class="project__excerpt">
-          Eliminating a daily manual chore — built a Python scraper that surfaces
-          new tenders for the BD team automatically.
-        </p>
-        <a href="projects/tender-webscraper.html" class="cta-link">
-          <span>View Case Study</span>
-          <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M0 4H22M19 1l3 3-3 3" stroke="currentColor" stroke-width="1.2"/>
-          </svg>
-        </a>
-      </div>
-    </section>
+    <!-- ── Projects Carousel ─────────────────────── -->
+    <section class="section section--projects" data-index="1">
 
-    <!-- ── Project 02 ─────────────────────────────── -->
-    <section class="section section--project" data-index="3">
-      <div class="project__watermark" aria-hidden="true">02</div>
-      <div class="project__content">
-        <span class="label">Next.js · TypeScript · Claude API</span>
-        <h2 class="project__title">Japan Bike<br />Trip Planner</h2>
-        <p class="project__excerpt">
-          Route planning and AI-generated itineraries for motorcycle trips
-          through rural Japan — built with Next.js and the Claude API.
-        </p>
-        <a href="projects/japan-trip-planner.html" class="cta-link">
-          <span>View Case Study</span>
-          <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <div class="projects-carousel" id="projects-carousel">
+
+        <!-- Card 01 — Tender Webscraper -->
+        <div class="project-card" data-card="0">
+          <div class="project-card__bg project-card__bg--01" aria-hidden="true"></div>
+          <div class="project-card__overlay" aria-hidden="true"></div>
+          <div class="project-card__body">
+            <span class="project-card__number">01</span>
+            <p class="label">Automation · Python · Logistics</p>
+            <h2 class="project-card__title">Tender<br />Webscraper</h2>
+            <p class="project-card__excerpt">
+              Eliminating a daily manual chore — built a Python scraper that surfaces
+              new tenders for the BD team automatically.
+            </p>
+            <a href="projects/tender-webscraper.html" class="cta-link cta-link--light">
+              <span>View Case Study</span>
+              <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 4H22M19 1l3 3-3 3" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+            </a>
+          </div>
+          <span class="project-card__counter" aria-hidden="true">01 / 02</span>
+        </div>
+
+        <!-- Card 02 — Japan Bike Trip Planner -->
+        <div class="project-card" data-card="1">
+          <div class="project-card__bg project-card__bg--02" aria-hidden="true"></div>
+          <div class="project-card__overlay" aria-hidden="true"></div>
+          <div class="project-card__body">
+            <span class="project-card__number">02</span>
+            <p class="label">Next.js · TypeScript · Claude API</p>
+            <h2 class="project-card__title">Japan Bike<br />Trip Planner</h2>
+            <p class="project-card__excerpt">
+              Route planning and AI-generated itineraries for motorcycle trips
+              through rural Japan.
+            </p>
+            <a href="projects/japan-trip-planner.html" class="cta-link cta-link--light">
+              <span>View Case Study</span>
+              <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M0 4H22M19 1l3 3-3 3" stroke="currentColor" stroke-width="1.2"/>
+              </svg>
+            </a>
+          </div>
+          <span class="project-card__counter" aria-hidden="true">02 / 02</span>
+        </div>
+
+      </div>
+
+      <!-- Carousel nav bar -->
+      <div class="carousel-nav">
+        <button class="carousel-nav__btn" id="carousel-prev" aria-label="Previous project">
+          <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 4H2M5 1L2 4l3 3" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </button>
+        <div class="carousel-nav__dots" role="tablist" aria-label="Project slides">
+          <button class="carousel-dot is-active" data-slide="0" aria-label="Project 01" role="tab"></button>
+          <button class="carousel-dot" data-slide="1" aria-label="Project 02" role="tab"></button>
+        </div>
+        <button class="carousel-nav__btn" id="carousel-next" aria-label="Next project">
+          <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 4H22M19 1l3 3-3 3" stroke="currentColor" stroke-width="1.2"/>
           </svg>
-        </a>
+        </button>
       </div>
+
+      <!-- Section label top-left -->
+      <div class="projects-label">
+        <p class="label">Selected Work</p>
+      </div>
+
     </section>
 
   </main>

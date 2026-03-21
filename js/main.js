@@ -1,76 +1,85 @@
 /**
- * Scroll-snap dot navigation updater
- * Watches which section is in view and highlights the matching dot.
+ * Scroll-snap dot navigation + horizontal project carousel
  */
 (function () {
   'use strict';
 
-  const container = document.getElementById('scroll-container');
-  const sections  = document.querySelectorAll('.section');
-  const dots      = document.querySelectorAll('.dot-nav__dot');
+  const sections     = document.querySelectorAll('.section');
+  const dots         = document.querySelectorAll('.dot-nav__dot');
+  const carousel     = document.getElementById('projects-carousel');
+  const cards        = carousel ? Array.from(carousel.querySelectorAll('.project-card')) : [];
+  const carouselDots = Array.from(document.querySelectorAll('.carousel-dot'));
 
-  if (!sections.length || !dots.length) return;
+  let currentIdx  = 0; // vertical section index
+  let currentCard = 0; // horizontal card index
 
-  /* ── Intersection Observer ── */
-  const observer = new IntersectionObserver(
+  /* ── Section dot nav ── */
+  const sectionObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const idx = entry.target.dataset.index;
+          const idx = parseInt(entry.target.dataset.index, 10);
+          currentIdx = idx;
           dots.forEach((d) => d.classList.remove('is-active'));
           if (dots[idx]) dots[idx].classList.add('is-active');
         }
       });
     },
-    {
-      root: null,
-      threshold: 0.55,
-    }
+    { threshold: 0.55 }
   );
+  sections.forEach((s) => sectionObserver.observe(s));
 
-  sections.forEach((section) => observer.observe(section));
-
-  /* ── Dot click → scroll to section ── */
   dots.forEach((dot) => {
     dot.addEventListener('click', () => {
-      const targetIdx = dot.dataset.target;
-      const targetSection = document.querySelector(
-        `.section[data-index="${targetIdx}"]`
-      );
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth' });
-      }
+      const target = document.querySelector(`.section[data-index="${dot.dataset.target}"]`);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
 
-  /* ── Keyboard arrow navigation ── */
-  let currentIdx = 0;
+  /* ── Carousel ── */
+  function goToCard(idx) {
+    if (!cards.length) return;
+    currentCard = Math.max(0, Math.min(idx, cards.length - 1));
+    cards[currentCard].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    carouselDots.forEach((d, i) => d.classList.toggle('is-active', i === currentCard));
+  }
 
-  document.addEventListener('keydown', (e) => {
-    const total = sections.length;
-    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-      e.preventDefault();
-      currentIdx = Math.min(currentIdx + 1, total - 1);
-    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-      e.preventDefault();
-      currentIdx = Math.max(currentIdx - 1, 0);
-    } else {
-      return;
-    }
-    sections[currentIdx].scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('carousel-prev')?.addEventListener('click', () => goToCard(currentCard - 1));
+  document.getElementById('carousel-next')?.addEventListener('click', () => goToCard(currentCard + 1));
+
+  carouselDots.forEach((dot) => {
+    dot.addEventListener('click', () => goToCard(parseInt(dot.dataset.slide, 10)));
   });
 
-  /* Keep currentIdx in sync with observer */
-  const syncObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          currentIdx = parseInt(entry.target.dataset.index, 10);
-        }
-      });
-    },
-    { threshold: 0.55 }
-  );
+  // Keep currentCard in sync when user swipes/scrolls carousel manually
+  if (carousel) {
+    carousel.addEventListener('scroll', () => {
+      const newCard = Math.round(carousel.scrollLeft / carousel.offsetWidth);
+      if (newCard !== currentCard) {
+        currentCard = newCard;
+        carouselDots.forEach((d, i) => d.classList.toggle('is-active', i === currentCard));
+      }
+    }, { passive: true });
+  }
 
-  sections.forEach((s) => syncObserver.observe(s));
+  /* ── Keyboard navigation ── */
+  document.addEventListener('keydown', (e) => {
+    const total = sections.length;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      currentIdx = Math.min(currentIdx + 1, total - 1);
+      sections[currentIdx].scrollIntoView({ behavior: 'smooth' });
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      currentIdx = Math.max(currentIdx - 1, 0);
+      sections[currentIdx].scrollIntoView({ behavior: 'smooth' });
+    } else if (e.key === 'ArrowRight' && currentIdx === 1) {
+      e.preventDefault();
+      goToCard(currentCard + 1);
+    } else if (e.key === 'ArrowLeft' && currentIdx === 1) {
+      e.preventDefault();
+      goToCard(currentCard - 1);
+    }
+  });
 })();
