@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Japan Bike Trip Planner — Daniel Chew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/project.css" />
+</head>
+<body>
+
+  <a href="../index.html" class="back-link">
+    <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M24 4H2M5 1L2 4l3 3" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
+    <span>All Projects</span>
+  </a>
+
+  <article class="project-page">
+
+    <header class="project-header">
+      <div class="project-header__meta">
+        <span class="project-header__number">02</span>
+        <span class="project-header__category">Next.js · TypeScript · Claude API</span>
+      </div>
+      <h1 class="project-header__title">Japan Bike<br />Trip Planner</h1>
+      <p class="project-header__tagline">
+        Route planning and AI-generated itineraries for motorcycle trips
+        through rural Japan — because the best roads aren't on the tourist map.
+      </p>
+    </header>
+
+    <!-- ── The What ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">The What</h2>
+      <div class="project-section__body">
+        <p>
+          A full-stack web app for planning multi-day motorcycle trips through
+          rural Japan. It combines Google Maps route planning with Claude-powered
+          itinerary generation — letting riders plot a route, set waypoints, and
+          receive a detailed day-by-day plan tailored to biker-friendly stops,
+          scenic roads, and practical logistics.
+        </p>
+        <p>
+          Key features include draggable waypoints, automatic rest-stop suggestions
+          every ~2 hours, a fuel and toll cost calculator, and four pre-built
+          routes (Nikko Ridge, Izu Peninsula, Japanese Alps, Kyushu Aso Caldera).
+          State persists across sessions via Zustand and localStorage.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── The Why ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">The Why</h2>
+      <div class="project-section__body">
+        <p>
+          Planning a motorcycle trip through rural Japan involves more moving parts
+          than a typical travel itinerary: road surfaces, fuel stop gaps on mountain
+          passes, biker-friendly guesthouses, seasonal closures. Generic travel
+          planners don't understand these constraints — and asking an AI for
+          recommendations without grounding it in real route data produces generic
+          advice.
+        </p>
+        <p>
+          This project was an excuse to explore what happens when you connect
+          Claude's reasoning to structured geographical data. Rather than asking
+          "recommend things near Nikko," the app passes the actual route geometry
+          and asks Claude to reason about it — producing suggestions that are
+          spatially coherent, not just topically related.
+        </p>
+        <p>
+          It also gave me hands-on experience with the full Claude API integration
+          stack: prompt design, structured output handling, and UX patterns for
+          streaming responses — directly relevant to the kind of AI product work
+          I want to do in Tokyo.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── What I Learned ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">What I Learned</h2>
+      <ul class="learning-list">
+        <li class="learning-list__item" data-n="01">
+          <p>
+            <strong>Grounding AI in real data changes the quality ceiling.</strong>
+            Claude with a route geometry and a curated biker POI dataset produced
+            recommendations that were genuinely useful. The same prompts without
+            that context produced plausible-sounding but spatially incoherent
+            suggestions. Context is the product.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="02">
+          <p>
+            <strong>Maps UX is deceptively complex.</strong>
+            Draggable waypoints, re-routing on drop, cost recalculation — each
+            interaction touches multiple state slices simultaneously. Zustand's
+            flat store model kept this manageable, but it required thinking
+            carefully about what counts as derived state vs. source of truth.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="03">
+          <p>
+            <strong>Shipping with API keys is a product decision, not a technical one.</strong>
+            The app requires both Google Maps and Claude API keys to run, which
+            blocks casual use. Building the four pre-built routes as zero-config
+            demos was a deliberate workaround — it lets someone experience the
+            product without setting up credentials.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="project-footer">
+      <span class="project-footer__label">02 / 02</span>
+      <nav class="project-footer__nav">
+        <a href="tender-webscraper.html">← Previous Project</a>
+        <a href="../index.html">All Projects</a>
+      </nav>
+    </footer>
+
+  </article>
+
+</body>
+</html>
