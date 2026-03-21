@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Flow Visualizer — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/project.css" />
+</head>
+<body>
+
+  <a href="../index.html" class="back-link">
+    <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M24 4H2M5 1L2 4l3 3" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
+    <span>All Projects</span>
+  </a>
+
+  <article class="project-page">
+
+    <header class="project-header">
+      <div class="project-header__meta">
+        <span class="project-header__number">01</span>
+        <span class="project-header__category">Productivity · Visualization</span>
+      </div>
+      <h1 class="project-header__title">Task Flow<br />Visualizer</h1>
+      <p class="project-header__tagline">
+        Mapping project dependencies before they become bottlenecks.
+      </p>
+    </header>
+
+    <!-- ── The What ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">The What</h2>
+      <div class="project-section__body">
+        <p>
+          Task Flow Visualizer is a browser-based tool that lets you define tasks,
+          link them with dependency arrows, and see in a single view where your
+          critical path actually runs. You input tasks as nodes, set "depends on"
+          relationships, and the tool renders an auto-laid-out directed graph — no
+          whiteboard, no sticky notes.
+        </p>
+        <p>
+          The goal was minimal friction: paste a simple structured list and get
+          a visual map back instantly. No sign-up, no cloud sync, no settings panel
+          bloat. Just the diagram.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── The Why ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">The Why</h2>
+      <div class="project-section__body">
+        <p>
+          I kept running into the same situation across projects: dependencies existed
+          in everyone's heads, never on paper. By the time a blocker surfaced in a
+          status call, the delay had already rippled two sprints forward.
+        </p>
+        <p>
+          I tried Jira, Asana, and a few Miro templates — but they all required too
+          much setup for the clarity I needed at the start of a sprint. I wanted
+          something I could pull up in a planning meeting and fill in live. So I built it.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── What I Learned ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">What I Learned</h2>
+      <ul class="learning-list">
+        <li class="learning-list__item" data-n="01">
+          <p>
+            <strong>Graph layout is a hard problem.</strong> I assumed I could write
+            a layout algorithm in an afternoon. Three days later I was reading academic
+            papers on Sugiyama-style layered graphs. I ended up using a library — but
+            understanding why made me a better collaborator with the engineers I work with.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="02">
+          <p>
+            <strong>Users want to paste, not type.</strong> Early testers ignored my
+            form inputs entirely and tried to paste spreadsheet data straight into the
+            textarea. That told me everything about where the friction was.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="03">
+          <p>
+            <strong>Visual fidelity and functional accuracy aren't the same thing.</strong>
+            A beautiful diagram that mislabels the critical path is worse than
+            a plain text list. I learned to test the logic independently of the visuals.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="project-footer">
+      <span class="project-footer__label">01 / 03</span>
+      <nav class="project-footer__nav">
+        <a href="retro-dashboard.html">Next Project →</a>
+        <a href="../index.html">All Projects</a>
+      </nav>
+    </footer>
+
+  </article>
+
+</body>
+</html>

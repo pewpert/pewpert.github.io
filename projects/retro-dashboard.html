@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retro Dashboard — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/project.css" />
+</head>
+<body>
+
+  <a href="../index.html" class="back-link">
+    <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M24 4H2M5 1L2 4l3 3" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
+    <span>All Projects</span>
+  </a>
+
+  <article class="project-page">
+
+    <header class="project-header">
+      <div class="project-header__meta">
+        <span class="project-header__number">02</span>
+        <span class="project-header__category">Agile · Analytics</span>
+      </div>
+      <h1 class="project-header__title">Retro<br />Dashboard</h1>
+      <p class="project-header__tagline">
+        Turning sprint retrospectives into insight that compounds over time.
+      </p>
+    </header>
+
+    <!-- ── The What ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">The What</h2>
+      <div class="project-section__body">
+        <p>
+          Retro Dashboard is a lightweight web app for capturing, tagging, and tracking
+          retrospective items across sprints. Each item — whether a "What went well,"
+          "What didn't," or "Action" — is tagged by theme (process, communication,
+          tooling, etc.) and persists between sessions.
+        </p>
+        <p>
+          Over time, a simple chart shows which themes keep resurfacing. If "unclear
+          requirements" appears in five consecutive retros, the dashboard makes that
+          pattern undeniable — which makes the conversation with leadership much shorter.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── The Why ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">The Why</h2>
+      <div class="project-section__body">
+        <p>
+          Retrospectives felt like the most honest meeting on the calendar, and also the
+          least leveraged. We'd fill a Miro board, agree on three actions, and close the
+          tab. Two weeks later, nobody could remember what we'd said. The actions lived
+          in the meeting notes nobody re-read.
+        </p>
+        <p>
+          I wanted a tool that treated retro data as a longitudinal dataset, not a
+          one-off output. The insight isn't in any single retro — it's in the
+          pattern across twenty of them.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── What I Learned ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">What I Learned</h2>
+      <ul class="learning-list">
+        <li class="learning-list__item" data-n="01">
+          <p>
+            <strong>Taxonomy is product design.</strong> The tag list I chose shaped what
+            teams noticed. When I added "morale" as a tag, people started tagging things
+            they'd previously left untagged. The categories create the language.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="02">
+          <p>
+            <strong>Local storage is underrated for low-stakes tools.</strong> I spent a
+            week planning a backend before realising the entire audience was one team,
+            in one browser. localStorage solved 90% of the problem with 10% of the effort.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="03">
+          <p>
+            <strong>Data without a decision point is just trivia.</strong> The chart showing
+            recurring themes was interesting. But it only changed behaviour once I added a
+            simple prompt: "This theme has appeared 4 times. What's the root cause?" The
+            question is what makes the data actionable.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="project-footer">
+      <span class="project-footer__label">02 / 03</span>
+      <nav class="project-footer__nav">
+        <a href="stakeholder-map.html">Next Project →</a>
+        <a href="../index.html">All Projects</a>
+      </nav>
+    </footer>
+
+  </article>
+
+</body>
+</html>

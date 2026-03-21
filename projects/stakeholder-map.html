@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stakeholder Map — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/project.css" />
+</head>
+<body>
+
+  <a href="../index.html" class="back-link">
+    <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M24 4H2M5 1L2 4l3 3" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
+    <span>All Projects</span>
+  </a>
+
+  <article class="project-page">
+
+    <header class="project-header">
+      <div class="project-header__meta">
+        <span class="project-header__number">03</span>
+        <span class="project-header__category">Strategy · UX</span>
+      </div>
+      <h1 class="project-header__title">Stakeholder<br />Map</h1>
+      <p class="project-header__tagline">
+        An interactive canvas to surface invisible relationships and hidden influence.
+      </p>
+    </header>
+
+    <!-- ── The What ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">The What</h2>
+      <div class="project-section__body">
+        <p>
+          Stakeholder Map is a drag-and-drop canvas where you place stakeholders on a
+          two-axis grid — influence vs. interest — and draw relationship lines between
+          them. Each node holds a name, role, communication preference, and a short
+          notes field. The whole thing exports as a clean PNG for decks.
+        </p>
+        <p>
+          It's deliberately opinionated: the grid forces you to make a judgment call
+          about every person on the list. You can't just add someone without placing
+          them, which is the point.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── The Why ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">The Why</h2>
+      <div class="project-section__body">
+        <p>
+          I inherited a project midway through and discovered twelve people who
+          thought they were stakeholders, three who were but didn't know it, and one
+          executive who'd been briefed incorrectly for two months. Nobody had a map.
+        </p>
+        <p>
+          Every stakeholder mapping exercise I'd done used a 2x2 PowerPoint slide that
+          lived in a deck nobody opened again. I wanted something that felt like a
+          live document — something you'd update the week before a steering committee,
+          not build once at kickoff and forget.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── What I Learned ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">What I Learned</h2>
+      <ul class="learning-list">
+        <li class="learning-list__item" data-n="01">
+          <p>
+            <strong>Drag-and-drop is deceptively complex.</strong> Getting smooth,
+            accessible drag-and-drop without a library took far longer than expected.
+            I eventually used a minimal library, but understanding the pointer events
+            model first made me much faster at debugging edge cases.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="02">
+          <p>
+            <strong>The tool shapes the conversation.</strong> When I used this in a
+            real planning session, stakeholders disputed each other's placements.
+            That argument was more valuable than anything written in the notes. A good
+            tool makes disagreement visible and productive.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="03">
+          <p>
+            <strong>Export fidelity matters more than you think.</strong> The first
+            PNG exports looked fine on screen and terrible in a deck. I learned about
+            device pixel ratio, canvas scaling, and why you should always test your
+            output in the context where it will actually be used.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="04">
+          <p>
+            <strong>Structure is a design decision, not a constraint.</strong> The
+            forced two-axis grid was the most controversial feature in early feedback —
+            "too rigid." But every person who used it in a real project said the rigidity
+            was what made it useful. Constraints create clarity.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="project-footer">
+      <span class="project-footer__label">03 / 03</span>
+      <nav class="project-footer__nav">
+        <a href="task-flow-visualizer.html">← First Project</a>
+        <a href="../index.html">All Projects</a>
+      </nav>
+    </footer>
+
+  </article>
+
+</body>
+</html>
