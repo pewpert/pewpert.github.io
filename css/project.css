@@ -1,17 +1,17 @@
 /* ============================================================
-   Project Detail Page Styles — "The Operator"
+   Project Detail Page Styles — "The Architect"
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --bg:        #090C15;
-  --surface:   #0F1220;
-  --ink:       #E4E0D6;
-  --accent:    #E8573A;
-  --blue:      #4FACFE;
-  --muted:     #5A6070;
-  --rule:      #1A1E2C;
-  --rule-lt:   #252A3A;
+  --bg:        #F5F1EB;
+  --surface:   #EDE9E1;
+  --ink:       #14171F;
+  --accent:    #C44B2F;
+  --blue:      #3A6EA5;
+  --muted:     #8A8E98;
+  --rule:      #D8D3CA;
+  --rule-lt:   #E5E1D9;
 
   --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --serif:   'Cormorant Garamond', Georgia, 'Times New Roman', serif;
@@ -47,7 +47,7 @@ body::after {
   inset: 0;
   background-image:
     url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.025;
+  opacity: 0.018;
   pointer-events: none;
   z-index: 9999;
 }
@@ -108,8 +108,8 @@ a {
   position: absolute;
   inset: -2rem -3rem;
   background-image:
-    repeating-linear-gradient(rgba(79, 172, 254, 0.025) 1px, transparent 1px),
-    repeating-linear-gradient(90deg, rgba(79, 172, 254, 0.025) 1px, transparent 1px);
+    repeating-linear-gradient(rgba(20, 23, 31, 0.03) 1px, transparent 1px),
+    repeating-linear-gradient(90deg, rgba(20, 23, 31, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
   pointer-events: none;
 }
@@ -190,7 +190,7 @@ a {
   font-size: clamp(1rem, 1.4vw, 1.1rem);
   font-weight: 300;
   line-height: 1.95;
-  color: rgba(228, 224, 214, 0.78);
+  color: rgba(20, 23, 31, 0.7);
   max-width: 68ch;
 }
 
@@ -235,7 +235,7 @@ a {
   font-size: clamp(1rem, 1.3vw, 1.05rem);
   font-weight: 300;
   line-height: 1.9;
-  color: rgba(228, 224, 214, 0.78);
+  color: rgba(20, 23, 31, 0.7);
 }
 
 .learning-list__item strong {

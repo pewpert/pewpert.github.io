@@ -1,15 +1,16 @@
 /* ============================================================
-   Design Tokens — "The Operator"
+   Design Tokens — "The Architect"
+   Warm parchment · deep navy ink · terracotta accent
    ============================================================ */
 :root {
-  --bg:        #090C15;
-  --surface:   #0F1220;
-  --ink:       #E4E0D6;
-  --accent:    #E8573A;
-  --blue:      #4FACFE;
-  --muted:     #5A6070;
-  --rule:      #1A1E2C;
-  --rule-lt:   #252A3A;
+  --bg:        #F5F1EB;
+  --surface:   #EDE9E1;
+  --ink:       #14171F;
+  --accent:    #C44B2F;
+  --blue:      #3A6EA5;
+  --muted:     #8A8E98;
+  --rule:      #D8D3CA;
+  --rule-lt:   #E5E1D9;
 
   --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --sans:    'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -47,14 +48,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Grain overlay for depth */
+/* Grain overlay for texture */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   background-image:
     url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.025;
+  opacity: 0.018;
   pointer-events: none;
   z-index: 9999;
 }
@@ -185,7 +186,7 @@ a {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--rule-lt);
+  background: var(--rule);
   border: none;
   cursor: pointer;
   padding: 0;
@@ -238,38 +239,37 @@ a {
   justify-content: center;
 }
 
-/* Blueprint grid atmosphere */
+/* Drafting-paper grid */
 .section--about::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
     repeating-linear-gradient(
-      rgba(79, 172, 254, 0.028) 1px, transparent 1px
+      rgba(20, 23, 31, 0.032) 1px, transparent 1px
     ),
     repeating-linear-gradient(
-      90deg, rgba(79, 172, 254, 0.028) 1px, transparent 1px
+      90deg, rgba(20, 23, 31, 0.032) 1px, transparent 1px
     );
   background-size: 48px 48px;
   pointer-events: none;
 }
 
-/* Atmospheric glow */
+/* Atmospheric glow — warm, subtle */
 .section--about::after {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 55% 65% at 78% 48%, rgba(79, 172, 254, 0.07) 0%, transparent 65%),
-    radial-gradient(ellipse 35% 45% at 14% 72%, rgba(232, 87, 58, 0.055) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 40% at 50% 90%, rgba(9, 12, 21, 0.6) 0%, transparent 100%);
+    radial-gradient(ellipse 55% 65% at 78% 48%, rgba(58, 110, 165, 0.05) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 45% at 14% 72%, rgba(196, 75, 47, 0.035) 0%, transparent 55%);
   pointer-events: none;
   animation: about-breathe 8s ease-in-out infinite;
 }
 
 @keyframes about-breathe {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.7; }
+  50%       { opacity: 0.6; }
 }
 
 .about__inner {
@@ -287,20 +287,21 @@ a {
   height: 210px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 30%;
   flex-shrink: 0;
-  border: 1px solid var(--rule-lt);
-  filter: grayscale(20%) contrast(1.05);
+  border: 1px solid var(--rule);
+  filter: contrast(1.02) saturate(0.95);
   box-shadow:
-    0 0 0 6px rgba(79, 172, 254, 0.04),
-    0 24px 60px rgba(0, 0, 0, 0.5);
+    0 0 0 6px rgba(196, 75, 47, 0.04),
+    0 16px 48px rgba(20, 23, 31, 0.1);
   transition: filter 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 
 .about__photo:hover {
-  filter: grayscale(0%) contrast(1.05);
+  filter: contrast(1.04) saturate(1.05);
   box-shadow:
-    0 0 0 6px rgba(79, 172, 254, 0.1),
-    0 24px 80px rgba(0, 0, 0, 0.6);
+    0 0 0 6px rgba(196, 75, 47, 0.08),
+    0 16px 60px rgba(20, 23, 31, 0.16);
 }
 
 .about__text-col {
@@ -331,7 +332,7 @@ a {
   font-size: clamp(0.98rem, 1.4vw, 1.08rem);
   font-weight: 300;
   line-height: 1.9;
-  color: rgba(228, 224, 214, 0.82);
+  color: rgba(20, 23, 31, 0.72);
   max-width: 52ch;
   margin-bottom: 1rem;
 }
@@ -393,7 +394,7 @@ a {
   text-transform: uppercase;
   color: var(--ink);
   padding-bottom: 0.25rem;
-  border-bottom: 1px solid var(--rule-lt);
+  border-bottom: 1px solid var(--rule);
   transition: color 0.3s var(--ease), border-color 0.3s var(--ease), gap 0.3s var(--ease);
 }
 
@@ -413,10 +414,10 @@ a {
   transform: translateX(4px);
 }
 
-/* CTA variant for dark cards */
+/* CTA variant for muted card context */
 .cta-link--light {
-  color: rgba(228, 224, 214, 0.8);
-  border-bottom-color: rgba(228, 224, 214, 0.2);
+  color: rgba(20, 23, 31, 0.65);
+  border-bottom-color: rgba(20, 23, 31, 0.18);
 }
 
 .cta-link--light:hover {
@@ -441,7 +442,7 @@ a {
 }
 
 .projects-label .label {
-  color: rgba(228, 224, 214, 0.25);
+  color: rgba(20, 23, 31, 0.22);
   margin-bottom: 0;
 }
 
@@ -486,26 +487,22 @@ a {
   transform: scale(1.03);
 }
 
-/* Card 01: Port terminal radar — container bay grid + animated scan + radar rings */
+/* Card 01: Sage terminal — container grid + radar rings + scan line */
 .project-card__bg--01 {
-  background-color: #020A06;
+  background-color: #EBF2EC;
   background-image:
-    /* Horizontal container-bay shelf lines */
     repeating-linear-gradient(
       180deg,
       transparent 0px, transparent 44px,
-      rgba(35, 200, 80, 0.045) 44px, rgba(35, 200, 80, 0.045) 45px
+      rgba(35, 130, 70, 0.06) 44px, rgba(35, 130, 70, 0.06) 45px
     ),
-    /* Vertical bay dividers */
     repeating-linear-gradient(
       90deg,
       transparent 0px, transparent 94px,
-      rgba(35, 200, 80, 0.022) 94px, rgba(35, 200, 80, 0.022) 95px
+      rgba(35, 130, 70, 0.035) 94px, rgba(35, 130, 70, 0.035) 95px
     ),
-    /* Outer atmospheric bloom */
-    radial-gradient(ellipse 65% 85% at 84% 50%, rgba(35, 200, 80, 0.1) 0%, transparent 65%),
-    /* Hot-spot core */
-    radial-gradient(ellipse 22% 28% at 84% 50%, rgba(35, 200, 80, 0.2) 0%, transparent 55%);
+    radial-gradient(ellipse 65% 85% at 84% 50%, rgba(35, 130, 70, 0.09) 0%, transparent 65%),
+    radial-gradient(ellipse 22% 28% at 84% 50%, rgba(35, 130, 70, 0.14) 0%, transparent 55%);
   overflow: hidden;
 }
 
@@ -521,10 +518,10 @@ a {
   border-radius: 50%;
   background: radial-gradient(
     circle at center,
-    transparent 26%, rgba(35, 200, 80, 0.09) 27%, transparent 28.5%,
-    transparent 45%, rgba(35, 200, 80, 0.065) 46%, transparent 47.5%,
-    transparent 63%, rgba(35, 200, 80, 0.045) 64%, transparent 65.5%,
-    transparent 80%, rgba(35, 200, 80, 0.03) 81%, transparent 82.5%
+    transparent 26%, rgba(35, 130, 70, 0.1) 27%, transparent 28.5%,
+    transparent 45%, rgba(35, 130, 70, 0.07) 46%, transparent 47.5%,
+    transparent 63%, rgba(35, 130, 70, 0.05) 64%, transparent 65.5%,
+    transparent 80%, rgba(35, 130, 70, 0.035) 81%, transparent 82.5%
   );
   pointer-events: none;
   z-index: 0;
@@ -541,14 +538,14 @@ a {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(35, 200, 80, 0.4) 25%,
-    rgba(35, 200, 80, 0.9) 50%,
-    rgba(35, 200, 80, 0.4) 75%,
+    rgba(35, 130, 70, 0.3) 25%,
+    rgba(35, 130, 70, 0.65) 50%,
+    rgba(35, 130, 70, 0.3) 75%,
     transparent 100%
   );
   box-shadow:
-    0 0 8px 1px rgba(35, 200, 80, 0.3),
-    0 0 24px 3px rgba(35, 200, 80, 0.12);
+    0 0 6px 1px rgba(35, 130, 70, 0.15),
+    0 0 20px 2px rgba(35, 130, 70, 0.06);
   animation: scan-y 5.5s cubic-bezier(0.4, 0, 0.6, 1) infinite 2s;
   z-index: 1;
 }
@@ -560,28 +557,26 @@ a {
   100% { top: 100%; opacity: 0; }
 }
 
-/* Card 02: Japan mountain night — layered peaks + moon + atmosphere */
+/* Card 02: Misty mountain morning — layered peaks + golden light */
 .project-card__bg--02 {
-  background-color: #020410;
+  background-color: #E8ECF5;
   background-image:
-    /* Moon disc */
-    radial-gradient(circle 38px at 74% 20%, rgba(235, 240, 255, 0.22) 0%, rgba(210, 220, 255, 0.1) 50%, transparent 70%),
-    /* Moon corona */
-    radial-gradient(circle 100px at 74% 20%, rgba(100, 120, 210, 0.08) 0%, transparent 70%),
-    /* Horizon atmospheric haze */
-    radial-gradient(ellipse 90% 30% at 55% 70%, rgba(20, 40, 105, 0.32) 0%, transparent 72%),
-    /* Subtle star dust */
-    radial-gradient(ellipse 80% 60% at 70% 25%, rgba(80, 90, 160, 0.06) 0%, transparent 70%),
-    /* Sky depth gradient */
-    linear-gradient(180deg, #010210 0%, #020415 38%, #040818 68%, #060B22 100%);
+    /* Golden sun glow */
+    radial-gradient(circle 50px at 74% 16%, rgba(255, 200, 120, 0.35) 0%, rgba(255, 180, 100, 0.12) 50%, transparent 70%),
+    /* Sun halo */
+    radial-gradient(circle 130px at 74% 16%, rgba(240, 200, 140, 0.1) 0%, transparent 70%),
+    /* Horizon mist */
+    radial-gradient(ellipse 90% 25% at 55% 68%, rgba(180, 195, 220, 0.4) 0%, transparent 72%),
+    /* Sky depth */
+    linear-gradient(180deg, #E4E8F2 0%, #D8DEE9 40%, #D0D7E4 70%, #C8D0DE 100%);
 }
 
-/* Far mountain range — lighter indigo, hints of moonlight */
+/* Far mountain range — soft blue-gray, washed out */
 .project-card__bg--02::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #0D1538 0%, #0A1230 60%, #07101E 100%);
+  background: linear-gradient(180deg, #B8C4D6 0%, #AEBACA 60%, #A4B0C2 100%);
   clip-path: polygon(
     0% 100%, 0% 68%,
     5%  65%, 10% 70%, 15% 61%, 20% 67%,
@@ -590,15 +585,15 @@ a {
     74% 40%, 79% 47%, 84% 42%, 90% 49%,
     96% 45%, 100% 50%, 100% 100%
   );
-  opacity: 0.72;
+  opacity: 0.55;
 }
 
-/* Near mountain range — very dark, foreground mass */
+/* Near mountain range — deeper blue-gray */
 .project-card__bg--02::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #050710 0%, #040608 80%, #030507 100%);
+  background: linear-gradient(180deg, #8E9AB2 0%, #7E8CA6 80%, #74849C 100%);
   clip-path: polygon(
     0% 100%, 0% 80%,
     6%  77%, 12% 83%, 18% 74%, 24% 80%,
@@ -607,40 +602,41 @@ a {
     81% 61%, 87% 67%, 93% 63%, 98% 68%,
     100% 66%, 100% 100%
   );
+  opacity: 0.65;
 }
 
-/* Directional overlay */
+/* Directional overlay — warm white fade from left */
 .project-card__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(4, 6, 14, 0.97) 0%,
-    rgba(4, 6, 14, 0.88) 32%,
-    rgba(4, 6, 14, 0.45) 60%,
-    rgba(4, 6, 14, 0.12) 100%
+    rgba(245, 241, 235, 0.97) 0%,
+    rgba(245, 241, 235, 0.88) 32%,
+    rgba(245, 241, 235, 0.45) 60%,
+    rgba(245, 241, 235, 0.08) 100%
   );
 }
 
-/* Card 01 — pull a green tint into the left fade */
+/* Card 01 — sage-tinted fade */
 .project-card[data-card="0"] .project-card__overlay {
   background: linear-gradient(
     to right,
-    rgba(2, 10, 6, 0.97) 0%,
-    rgba(2, 10, 6, 0.9) 30%,
-    rgba(2, 10, 6, 0.45) 58%,
-    rgba(2, 10, 6, 0.08) 100%
+    rgba(240, 245, 240, 0.97) 0%,
+    rgba(240, 245, 240, 0.92) 28%,
+    rgba(240, 245, 240, 0.5) 58%,
+    rgba(240, 245, 240, 0.06) 100%
   );
 }
 
-/* Card 02 — pull a deep indigo tint into the left fade */
+/* Card 02 — steel blue-tinted fade */
 .project-card[data-card="1"] .project-card__overlay {
   background: linear-gradient(
     to right,
-    rgba(2, 4, 16, 0.97) 0%,
-    rgba(2, 4, 16, 0.9) 30%,
-    rgba(2, 4, 16, 0.5) 58%,
-    rgba(2, 4, 16, 0.1) 100%
+    rgba(236, 240, 247, 0.97) 0%,
+    rgba(236, 240, 247, 0.92) 28%,
+    rgba(236, 240, 247, 0.5) 58%,
+    rgba(236, 240, 247, 0.06) 100%
   );
 }
 
@@ -666,7 +662,7 @@ a {
     var(--accent) 70%,
     transparent
   );
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .project-card__number {
@@ -680,7 +676,7 @@ a {
 }
 
 .project-card__body .label {
-  color: rgba(228, 224, 214, 0.4);
+  color: rgba(20, 23, 31, 0.4);
 }
 
 .project-card__title {
@@ -689,7 +685,7 @@ a {
   font-weight: 300;
   line-height: 0.94;
   letter-spacing: -0.02em;
-  color: #E4E0D6;
+  color: var(--ink);
   margin-bottom: 1.75rem;
 }
 
@@ -697,7 +693,7 @@ a {
   font-size: clamp(0.95rem, 1.3vw, 1.05rem);
   font-weight: 300;
   line-height: 1.9;
-  color: rgba(228, 224, 214, 0.55);
+  color: rgba(20, 23, 31, 0.55);
   max-width: 42ch;
   margin-bottom: 2.75rem;
 }
@@ -710,7 +706,7 @@ a {
   font-family: var(--mono);
   font-size: 0.62rem;
   letter-spacing: 0.16em;
-  color: rgba(228, 224, 214, 0.2);
+  color: rgba(20, 23, 31, 0.18);
   z-index: 10;
 }
 
@@ -724,7 +720,7 @@ a {
   font-size: 22vw;
   font-weight: 700;
   line-height: 1;
-  color: rgba(228, 224, 214, 0.025);
+  color: rgba(20, 23, 31, 0.03);
   pointer-events: none;
   user-select: none;
   z-index: 0;
@@ -743,8 +739,8 @@ a {
 
 .carousel-nav__btn {
   background: none;
-  border: 1px solid rgba(228, 224, 214, 0.15);
-  color: rgba(228, 224, 214, 0.5);
+  border: 1px solid rgba(20, 23, 31, 0.15);
+  color: rgba(20, 23, 31, 0.4);
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
@@ -762,7 +758,7 @@ a {
 }
 
 .carousel-nav__btn:hover {
-  background: rgba(228, 224, 214, 0.06);
+  background: rgba(20, 23, 31, 0.04);
   border-color: var(--accent);
   color: var(--accent);
 }
@@ -777,7 +773,7 @@ a {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: rgba(228, 224, 214, 0.2);
+  background: rgba(20, 23, 31, 0.15);
   border: none;
   cursor: pointer;
   padding: 0;
@@ -787,6 +783,82 @@ a {
 .carousel-dot.is-active {
   background: var(--accent);
   transform: scale(1.5);
+}
+
+/* ============================================================
+   Future / What's Next Section
+   ============================================================ */
+.section--future {
+  justify-content: center;
+  background: var(--surface);
+}
+
+/* Subtle diagonal accent lines */
+.section--future::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 70px,
+    rgba(196, 75, 47, 0.022) 70px,
+    rgba(196, 75, 47, 0.022) 71px
+  );
+  pointer-events: none;
+}
+
+.future__inner {
+  max-width: 640px;
+  position: relative;
+  z-index: 1;
+}
+
+.future__heading {
+  font-family: var(--display);
+  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.future__heading::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 1px;
+  background: var(--accent);
+  margin-top: 1.2rem;
+}
+
+.future__text {
+  font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.9;
+  color: rgba(20, 23, 31, 0.68);
+  max-width: 52ch;
+  margin-bottom: 1.25rem;
+}
+
+.future__badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0.55rem 1.1rem;
+  border: 1px solid rgba(196, 75, 47, 0.22);
+  margin-top: 1.25rem;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.future__badge:hover {
+  background: rgba(196, 75, 47, 0.05);
+  border-color: rgba(196, 75, 47, 0.4);
 }
 
 /* ============================================================
@@ -857,10 +929,14 @@ a {
   .project-card__overlay {
     background: linear-gradient(
       to bottom,
-      rgba(4, 6, 14, 0.96) 0%,
-      rgba(4, 6, 14, 0.82) 50%,
-      rgba(4, 6, 14, 0.65) 100%
+      rgba(245, 241, 235, 0.97) 0%,
+      rgba(245, 241, 235, 0.85) 50%,
+      rgba(245, 241, 235, 0.65) 100%
     );
+  }
+
+  .future__inner {
+    max-width: 100%;
   }
 }
 
