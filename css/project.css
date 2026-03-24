@@ -282,6 +282,31 @@ a {
   color: var(--accent);
 }
 
+/* ── Per-project theme tints ───────────────── */
+/* Sage — matches Tender Webscraper card banner */
+body.theme-sage {
+  background-color: #EDF3EE;
+}
+
+body.theme-sage .project-header::before {
+  background-image:
+    repeating-linear-gradient(rgba(35, 130, 70, 0.03) 1px, transparent 1px),
+    repeating-linear-gradient(90deg, rgba(35, 130, 70, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Steel blue — matches Japan Trip Planner card banner */
+body.theme-blue {
+  background-color: #ECF0F7;
+}
+
+body.theme-blue .project-header::before {
+  background-image:
+    repeating-linear-gradient(rgba(58, 110, 165, 0.03) 1px, transparent 1px),
+    repeating-linear-gradient(90deg, rgba(58, 110, 165, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
 /* ── Responsive ────────────────────────────── */
 @media (max-width: 768px) {
   .back-link {

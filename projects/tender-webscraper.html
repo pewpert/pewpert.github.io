@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../css/project.css" />
 </head>
-<body>
+<body class="theme-sage">
 
   <a href="../index.html" class="back-link">
     <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -26,8 +26,8 @@
       </div>
       <h1 class="project-header__title">Automated Tender<br />Webscraper</h1>
       <p class="project-header__tagline">
-        Eliminating a daily manual chore — so the team could focus on the deals
-        worth winning.
+        My first taste of AI-assisted coding — using ChatGPT to turn a daily
+        manual chore into an automated pipeline.
       </p>
     </header>
 
@@ -70,11 +70,43 @@
       </div>
     </section>
 
+    <!-- ── How It Was Built ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">How It Was Built</h2>
+      <div class="project-section__body">
+        <p>
+          This was my first experience with "vibe coding." Without a formal
+          programming background, I leaned on ChatGPT throughout the process —
+          using it to guide Python syntax decisions, debug unexpected HTML
+          structures in the tender portals, and figure out how to parse pages
+          that loaded content dynamically.
+        </p>
+        <p>
+          The workflow was iterative: I'd describe what I wanted to extract,
+          ChatGPT would suggest an approach, I'd try it, hit a wall, and then
+          go back with the error message. Over a few weeks this loop taught me
+          more about requests, BeautifulSoup, and exception handling than any
+          tutorial would have. The AI didn't write the code for me — it
+          shortened the distance between "I know what I want" and "I know how
+          to get there."
+        </p>
+      </div>
+    </section>
+
     <!-- ── What I Learned ── -->
     <section class="project-section">
       <h2 class="project-section__heading">What I Learned</h2>
       <ul class="learning-list">
         <li class="learning-list__item" data-n="01">
+          <p>
+            <strong>AI-assisted coding lowers the barrier, not the bar.</strong>
+            ChatGPT got me past syntax hurdles fast — but understanding why the
+            code worked (or didn't) was still on me. The scraper only became
+            reliable once I stopped copy-pasting suggestions and started
+            reading the documentation they pointed to.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="02">
           <p>
             <strong>Scraper fragility is the real maintenance cost.</strong>
             HTML structures change without warning. I built in lightweight
@@ -83,21 +115,13 @@
             weeks later.
           </p>
         </li>
-        <li class="learning-list__item" data-n="02">
+        <li class="learning-list__item" data-n="03">
           <p>
             <strong>The output format matters as much as the data.</strong>
             A raw dump is as bad as no automation. I worked with the team to
             understand how they actually use the shortlist — and structured
             the output around their existing Excel workflow so adoption was
             instant.
-          </p>
-        </li>
-        <li class="learning-list__item" data-n="03">
-          <p>
-            <strong>Automation earns trust by being predictable.</strong>
-            The team needed to know the tool ran and what it found, even on
-            days with zero relevant tenders. A clear "nothing new today"
-            signal is more useful than silence.
           </p>
         </li>
       </ul>

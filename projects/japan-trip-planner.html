@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="../css/project.css" />
 </head>
-<body>
+<body class="theme-blue">
 
   <a href="../index.html" class="back-link">
     <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -26,8 +26,9 @@
       </div>
       <h1 class="project-header__title">Japan Bike<br />Trip Planner</h1>
       <p class="project-header__tagline">
-        Route planning and AI-generated itineraries for motorcycle trips
-        through rural Japan — because the best roads aren't on the tourist map.
+        Idea to working MVP in a single weekend — my first proper vibe-coding
+        sprint with Claude Code, and a lesson in what AI coding can (and can't)
+        guarantee.
       </p>
     </header>
 
@@ -51,6 +52,33 @@
       </div>
     </section>
 
+    <!-- ── How It Was Built ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">How It Was Built</h2>
+      <div class="project-section__body">
+        <p>
+          After my experience using ChatGPT on the Tender Webscraper, I wanted
+          to push further. This project was built entirely with Claude Code over
+          a single weekend — going from a rough idea to a working Next.js app
+          with TypeScript, Google Maps integration, and live Claude API calls.
+        </p>
+        <p>
+          Where the scraper had been slow and iterative, this was fast and
+          conversational. I described features in plain English, and Claude Code
+          scaffolded the components, handled the API wiring, and suggested
+          architectural patterns I wouldn't have known to use. The speed was
+          genuinely exciting — it felt like having a senior engineer on call.
+        </p>
+        <p>
+          But shipping something this fast also raised real questions. Without
+          deep TypeScript or Next.js knowledge, I couldn't fully audit what was
+          generated. Were there security gaps in the API routes? Edge cases in
+          the state management? I trusted the output, but I was aware of how
+          much I was trusting.
+        </p>
+      </div>
+    </section>
+
     <!-- ── The Why ── -->
     <section class="project-section">
       <h2 class="project-section__heading">The Why</h2>
@@ -70,12 +98,6 @@
           and asks Claude to reason about it — producing suggestions that are
           spatially coherent, not just topically related.
         </p>
-        <p>
-          It also gave me hands-on experience with the full Claude API integration
-          stack: prompt design, structured output handling, and UX patterns for
-          streaming responses — directly relevant to the kind of AI product work
-          I want to do in Tokyo.
-        </p>
       </div>
     </section>
 
@@ -85,6 +107,15 @@
       <ul class="learning-list">
         <li class="learning-list__item" data-n="01">
           <p>
+            <strong>AI coding is fast but not free.</strong>
+            Claude Code got me to a working app in two days. But the
+            time I saved on writing code, I owe back on understanding it.
+            Shipping responsibly means learning to read and audit what's
+            generated, not just trusting that it works.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="02">
+          <p>
             <strong>Grounding AI in real data changes the quality ceiling.</strong>
             Claude with a route geometry and a curated biker POI dataset produced
             recommendations that were genuinely useful. The same prompts without
@@ -92,22 +123,12 @@
             suggestions. Context is the product.
           </p>
         </li>
-        <li class="learning-list__item" data-n="02">
-          <p>
-            <strong>Maps UX is deceptively complex.</strong>
-            Draggable waypoints, re-routing on drop, cost recalculation — each
-            interaction touches multiple state slices simultaneously. Zustand's
-            flat store model kept this manageable, but it required thinking
-            carefully about what counts as derived state vs. source of truth.
-          </p>
-        </li>
         <li class="learning-list__item" data-n="03">
           <p>
-            <strong>Shipping with API keys is a product decision, not a technical one.</strong>
-            The app requires both Google Maps and Claude API keys to run, which
-            blocks casual use. Building the four pre-built routes as zero-config
-            demos was a deliberate workaround — it lets someone experience the
-            product without setting up credentials.
+            <strong>A weekend MVP reveals what a month of planning hides.</strong>
+            By shipping fast, I learned immediately which features users actually
+            cared about (the pre-built routes) and which they ignored (the custom
+            itinerary editor). Speed of feedback beats depth of specification.
           </p>
         </li>
       </ul>
