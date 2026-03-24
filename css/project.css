@@ -9,7 +9,7 @@
   --ink:       #0D1018;
   --accent:    #C44B2F;
   --blue:      #3A6EA5;
-  --muted:     #6B6F7A;
+  --muted:     #50535C;
   --rule:      #D8D3CA;
   --rule-lt:   #E5E1D9;
 
@@ -201,7 +201,7 @@ a {
   font-size: clamp(1.1rem, 1.6vw, 1.2rem);
   font-weight: 600;
   line-height: 1.95;
-  color: rgba(13, 16, 24, 0.85);
+  color: var(--ink);
   max-width: 68ch;
 }
 
@@ -246,7 +246,7 @@ a {
   font-size: clamp(1.1rem, 1.6vw, 1.2rem);
   font-weight: 600;
   line-height: 1.9;
-  color: rgba(13, 16, 24, 0.85);
+  color: var(--ink);
 }
 
 .learning-list__item strong {

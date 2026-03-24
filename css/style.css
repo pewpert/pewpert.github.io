@@ -8,7 +8,7 @@
   --ink:       #0D1018;
   --accent:    #C44B2F;
   --blue:      #3A6EA5;
-  --muted:     #6B6F7A;
+  --muted:     #50535C;
   --rule:      #D8D3CA;
   --rule-lt:   #E5E1D9;
 
@@ -332,7 +332,7 @@ a {
   font-size: clamp(1.1rem, 1.6vw, 1.2rem);
   font-weight: 600;
   line-height: 1.9;
-  color: rgba(13, 16, 24, 0.88);
+  color: var(--ink);
   max-width: 52ch;
   margin-bottom: 1rem;
 }
@@ -689,11 +689,20 @@ a {
   margin-bottom: 1.75rem;
 }
 
+.project-card__body a:has(.project-card__title) {
+  display: block;
+  transition: color 0.3s var(--ease);
+}
+
+.project-card__body a:has(.project-card__title):hover .project-card__title {
+  color: var(--accent);
+}
+
 .project-card__excerpt {
   font-size: clamp(1.1rem, 1.6vw, 1.2rem);
   font-weight: 600;
   line-height: 1.9;
-  color: rgba(13, 16, 24, 0.75);
+  color: rgba(13, 16, 24, 0.94);
   max-width: 42ch;
   margin-bottom: 2.75rem;
 }
@@ -837,7 +846,7 @@ a {
   font-size: clamp(1.1rem, 1.6vw, 1.2rem);
   font-weight: 600;
   line-height: 1.9;
-  color: rgba(13, 16, 24, 0.82);
+  color: var(--ink);
   max-width: 52ch;
   margin-bottom: 1.25rem;
 }
