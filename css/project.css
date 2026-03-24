@@ -161,6 +161,17 @@ a {
   position: relative;
 }
 
+/* Hero screenshot in project header */
+.project-header__screenshot {
+  display: block;
+  width: 100%;
+  margin-top: 2.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  box-shadow: 0 8px 32px rgba(20, 23, 31, 0.08);
+  position: relative;
+}
+
 /* ── Content Sections ──────────────────────── */
 .project-section {
   margin-bottom: 4.5rem;
