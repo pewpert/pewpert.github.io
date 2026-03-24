@@ -471,7 +471,7 @@ a {
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 /* Card backgrounds */
@@ -909,7 +909,7 @@ a {
   }
 
   .project-card__body {
-    padding: 6rem 2rem 0 2.5rem;
+    padding: 8rem 2rem 0 2.5rem;
     max-width: 100%;
   }
 
