@@ -640,6 +640,79 @@ a {
   );
 }
 
+/* Card 03 — warm amber-tinted fade */
+.project-card[data-card="2"] .project-card__overlay {
+  background: linear-gradient(
+    to right,
+    rgba(244, 239, 231, 0.97) 0%,
+    rgba(244, 239, 231, 0.92) 28%,
+    rgba(244, 239, 231, 0.5) 58%,
+    rgba(244, 239, 231, 0.06) 100%
+  );
+}
+
+/* Card 03: Tokyo city-block grid — dense urban mapping aesthetic */
+.project-card__bg--03 {
+  background-color: #EDE6D8;
+  background-image:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0px, transparent 30px,
+      rgba(160, 110, 40, 0.07) 30px, rgba(160, 110, 40, 0.07) 31px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px, transparent 42px,
+      rgba(160, 110, 40, 0.05) 42px, rgba(160, 110, 40, 0.05) 43px
+    ),
+    radial-gradient(ellipse 60% 75% at 80% 50%, rgba(200, 140, 50, 0.13) 0%, transparent 65%),
+    linear-gradient(160deg, #EAE2D2 0%, #E4D9C6 55%, #DDCFBA 100%);
+  overflow: hidden;
+}
+
+/* Dense inner grid — city block density effect */
+.project-card__bg--03::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  width: 55%;
+  height: 75%;
+  background-image:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0px, transparent 10px,
+      rgba(160, 110, 40, 0.09) 10px, rgba(160, 110, 40, 0.09) 11px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px, transparent 14px,
+      rgba(160, 110, 40, 0.07) 14px, rgba(160, 110, 40, 0.07) 15px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Amber glow pulse */
+.project-card__bg--03::after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  right: 18%;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(210, 155, 55, 0.18) 0%, transparent 70%);
+  animation: amber-pulse 4.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes amber-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
+
 /* Left accent border on card */
 .project-card__body {
   position: relative;
