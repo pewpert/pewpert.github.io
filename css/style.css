@@ -713,6 +713,74 @@ a {
   50%       { opacity: 1;   transform: scale(1.2); }
 }
 
+/* Card 04 — warm cream-tinted fade */
+.project-card[data-card="3"] .project-card__overlay {
+  background: linear-gradient(
+    to right,
+    rgba(242, 238, 228, 0.97) 0%,
+    rgba(242, 238, 228, 0.92) 28%,
+    rgba(242, 238, 228, 0.5) 58%,
+    rgba(242, 238, 228, 0.06) 100%
+  );
+}
+
+/* Card 04: Scheduling heatmap — dot-grid calendar + clock radial + match pulse */
+.project-card__bg--04 {
+  background-color: #EDE7D5;
+  background-image:
+    radial-gradient(circle 2.5px at 12px 12px, rgba(245, 158, 11, 0.28) 100%, transparent 100%),
+    radial-gradient(ellipse 55% 70% at 82% 48%, rgba(245, 158, 11, 0.13) 0%, transparent 65%),
+    linear-gradient(155deg, #EBE3CE 0%, #E5D9C1 50%, #DECDB6 100%);
+  background-size: 24px 24px, auto, auto;
+  overflow: hidden;
+}
+
+/* Clock face radial spokes */
+.project-card__bg--04::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 6%;
+  width: 400px;
+  height: 400px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(
+      rgba(245, 158, 11, 0.05) 0deg,
+      rgba(245, 158, 11, 0.05) 1.5deg,
+      transparent 1.5deg,
+      transparent 30deg
+    ),
+    radial-gradient(
+      circle at center,
+      transparent 58%, rgba(245, 158, 11, 0.08) 59%, transparent 61%,
+      transparent 76%, rgba(245, 158, 11, 0.05) 77%, transparent 79%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Success match pulse — green glow */
+.project-card__bg--04::after {
+  content: '';
+  position: absolute;
+  top: 28%;
+  right: 22%;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(5, 150, 105, 0.22) 0%, transparent 70%);
+  animation: match-pulse 3.2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes match-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50%       { opacity: 1;    transform: scale(1.4); }
+}
+
 /* Left accent border on card */
 .project-card__body {
   position: relative;

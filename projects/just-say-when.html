@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>just say when. — Daniel Chew</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="../css/project.css" />
+</head>
+<body class="theme-cream">
+
+  <a href="../index.html" class="back-link">
+    <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M24 4H2M5 1L2 4l3 3" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
+    <span>All Projects</span>
+  </a>
+
+  <article class="project-page">
+
+    <header class="project-header">
+      <div class="project-header__meta">
+        <span class="project-header__number">04</span>
+        <span class="project-header__category">Vanilla JS · Firebase · No-framework</span>
+      </div>
+      <h1 class="project-header__title">just say when.</h1>
+      <p class="project-header__tagline">
+        The fastest way to pick a time everyone can make — solo-built, zero
+        dependencies, free to run, and actually shipped.
+      </p>
+    </header>
+
+    <!-- ── The What ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">The What</h2>
+      <div class="project-section__body">
+        <p>
+          A group scheduling app. Each person marks when they're free — either
+          in Basic mode (Morning / Afternoon / Evening per day, one tap) or
+          Advanced mode (drag-paint 30-minute slots). The app surfaces the slots
+          where everyone overlaps and highlights the match with a green banner:
+          <em>"You all found a time."</em>
+        </p>
+        <p>
+          Built with plain HTML, CSS, and vanilla JavaScript — no framework, no
+          build step. Firebase handles auth (Google + anonymous guest sign-in),
+          real-time sync via Firestore <code>onSnapshot</code>, and hosting.
+          Total payload is ~280 KB. Cost to run: $0 on Firebase's free tier,
+          comfortably supporting 300–500 active users.
+        </p>
+        <p>
+          Live at <a href="https://justsaywhen-f70e5.web.app" target="_blank" rel="noopener" style="color:var(--accent)">justsaywhen-f70e5.web.app</a> — currently being shared with friends.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── The Why ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">The Why</h2>
+      <div class="project-section__body">
+        <p>
+          Coordinating a meetup with three or more people in a group chat is a
+          multi-hour ordeal. Someone suggests a time, someone can't make it,
+          alternatives get proposed, people lose track, the question gets
+          re-asked the following week. Existing tools like Doodle and When2Meet
+          solve the problem but feel dated, are clunky on phones, and ask
+          everyone to create an account they don't want.
+        </p>
+        <p>
+          The design goal was friction-to-zero: share a 6-character code or a
+          link, tap your free slots, see the overlap. No account required to
+          respond. No installation. Nothing to remember next time. One job, done.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── How It Was Built ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">How It Was Built</h2>
+      <div class="project-section__body">
+        <p>
+          Two to three weeks of evenings, iterative. The deliberate choice to
+          skip frameworks was partly a constraint — to genuinely understand what
+          I was writing — and partly a product decision. No build step means
+          anyone can open DevTools and read the source directly. Loads in under
+          one second on cable.
+        </p>
+        <p>
+          The single hardest engineering problem was the mobile interaction model.
+          The first version used drag-to-paint across availability cells. It felt
+          fast — until it silently corrupted data. iOS Safari fires synthetic
+          <code>mousedown</code> events roughly 300ms after <code>touchend</code>,
+          which was toggling cells back off after users had toggled them on. The
+          fix required three iterations: the shipped version uses a tap-arming
+          pattern with a movement threshold and a 500ms synthetic-event guard to
+          suppress the Safari compatibility events entirely.
+        </p>
+        <p>
+          A timezone bug caught in QA was the other near-miss. The day-range
+          iterator was using <code>toISOString().slice(0,10)</code> — which silently
+          shifts dates back one day for any user east of UTC. Every meetup in
+          Asia-Pacific would have shown the wrong day. Replaced with a local-date
+          helper before launch.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── What I Learned ── -->
+    <section class="project-section">
+      <h2 class="project-section__heading">What I Learned</h2>
+      <ul class="learning-list">
+        <li class="learning-list__item" data-n="01">
+          <p>
+            <strong>Shipping to real users surfaces bugs no test suite catches.</strong>
+            Three rounds of self-directed QA found roughly 20 bugs ranging from
+            a P0 timezone day-shift that would have broken every Asian user, to
+            a P0 mobile data-corruption issue, to P3 UI polish. The bugs that
+            matter most are the silent ones — the ones where users think the app
+            worked and it didn't.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="02">
+          <p>
+            <strong>Anonymous auth removes the biggest source of drop-off.</strong>
+            Every scheduling app loses users at the "create an account" step.
+            Firebase Anonymous Auth lets any invitee tap "Continue as guest",
+            enter a name, and immediately respond — no email, no password, no
+            promise to remember a login. They can promote to a Google account
+            later if they want their data across devices. Removing that barrier
+            was a product decision that mattered more than any feature.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="03">
+          <p>
+            <strong>Platform inconsistencies are bugs you didn't write.</strong>
+            The iOS Safari synthetic-event issue wasn't in my code. Neither was
+            the scroll-position loss during Firestore snapshot re-renders, which
+            required a <code>requestAnimationFrame</code> two-phase restore with
+            a forced layout recalculation. Mobile browsers have a long memory of
+            their own opinions about how touch and scroll should work. Testing
+            on real devices, not just DevTools emulation, is non-negotiable.
+          </p>
+        </li>
+        <li class="learning-list__item" data-n="04">
+          <p>
+            <strong>No-framework is a valid choice — but you inherit the work.</strong>
+            Vanilla JS meant I wrote my own state management, my own DOM diffing
+            workaround, my own event delegation. The app is fast and small and
+            easy to read. It is also mine in a way that a React app with 200
+            dependencies would not be. The tradeoff is real: I understand every
+            line, which made debugging faster — and also meant there was nobody
+            else's abstraction to blame when something broke.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="project-footer">
+      <span class="project-footer__label">04 / 04</span>
+      <nav class="project-footer__nav">
+        <a href="tokyo-apartment-search.html">← Previous Project</a>
+        <a href="../index.html">All Projects</a>
+      </nav>
+    </footer>
+
+  </article>
+
+</body>
+</html>

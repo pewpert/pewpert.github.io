@@ -318,6 +318,18 @@ body.theme-blue .project-header::before {
   background-size: 48px 48px;
 }
 
+/* Warm cream — matches Just Say When card banner */
+body.theme-cream {
+  background-color: #FAF6EE;
+}
+
+body.theme-cream .project-header::before {
+  background-image:
+    repeating-linear-gradient(rgba(245, 158, 11, 0.03) 1px, transparent 1px),
+    repeating-linear-gradient(90deg, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
 /* Warm amber — matches Tokyo Apartment Search card banner */
 body.theme-amber {
   background-color: #F4EEE3;
