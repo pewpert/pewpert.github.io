@@ -1,19 +1,21 @@
 /* ============================================================
-   Daniel Chew — Cobalt
+   Daniel Chew — Off-white
    Layout: one quiet column. Intro and profile card, selected
    work as labelled project cards, small tools, about, skills,
-   experience, contact. Light, cool greys with one cobalt accent.
+   experience, contact. Warm off-white paper, graphite ink,
+   deep slate-blue accent with a brass second accent for marks.
    ============================================================ */
 :root {
-  --bg:      #F4F5F6;
-  --surface: #FFFFFF;
-  --ink:     #11151A;
-  --ink-2:   #4A525C;
-  --rule:    #D3D8DE;
-  --rule-2:  #E6E9ED;
-  --accent:  #2340C8;
-  --on-accent: #FFFFFF;
-  --live:    #1F7A4D;
+  --bg:      #F7F5F0;
+  --surface: #FFFEFB;
+  --ink:     #1B1D20;
+  --ink-2:   #5A5D62;
+  --rule:    #DDD8CE;
+  --rule-2:  #ECE8E0;
+  --accent:  #2F4A78;
+  --accent-2: #85652A;
+  --on-accent: #FFFEFB;
+  --live:    #2F7A55;
 
   --display: 'Newsreader', Georgia, 'Times New Roman', serif;
   --body:    'Hanken Grotesk', 'Helvetica Neue', Arial, sans-serif;
@@ -32,15 +34,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #101317; --surface: #171B20; --ink: #EDEFF2; --ink-2: #B3BAC3;
-    --rule: #2B323A; --rule-2: #20262C; --accent: #8EA2FF; --on-accent: #101317;
-    --live: #5CC596; color-scheme: dark;
+    --bg: #151514; --surface: #1D1D1B; --ink: #EEEBE4; --ink-2: #B5B1A8;
+    --rule: #33322E; --rule-2: #262624; --accent: #9DB4DE; --accent-2: #D2B072;
+    --on-accent: #151514; --live: #6CC59A; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #101317; --surface: #171B20; --ink: #EDEFF2; --ink-2: #B3BAC3;
-  --rule: #2B323A; --rule-2: #20262C; --accent: #8EA2FF; --on-accent: #101317;
-  --live: #5CC596; color-scheme: dark;
+  --bg: #151514; --surface: #1D1D1B; --ink: #EEEBE4; --ink-2: #B5B1A8;
+  --rule: #33322E; --rule-2: #262624; --accent: #9DB4DE; --accent-2: #D2B072;
+  --on-accent: #151514; --live: #6CC59A; color-scheme: dark;
 }
 
 /* ── Base ───────────────────────────────────── */
@@ -105,7 +107,7 @@ p { margin: 0; }
   font-size: var(--step--1);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--ink-2);
+  color: var(--accent-2);
 }
 
 /* ── Top bar ────────────────────────────────── */
@@ -320,7 +322,7 @@ body::before {
   background: var(--bg);
 }
 
-.progression li:last-child::before { background: var(--accent); border-color: var(--accent); }
+.progression li:last-child::before { background: var(--accent-2); border-color: var(--accent-2); }
 
 .progression b { display: block; font-weight: 600; }
 
@@ -503,7 +505,7 @@ body::before {
   gap: 0.6rem;
   align-content: start;
   padding-top: 1rem;
-  border-top: 2px solid var(--ink);
+  border-top: 2px solid var(--accent-2);
   min-width: 0;
 }
 
