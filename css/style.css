@@ -268,6 +268,9 @@ body::before {
   border-top: 1px solid var(--rule);
 }
 
+/* Keep anchored headings clear of the sticky top bar */
+section[id] { scroll-margin-top: 4.5rem; }
+
 .section__head {
   display: flex;
   justify-content: space-between;
@@ -426,6 +429,52 @@ body::before {
 
 .cover__slots i.on { background: color-mix(in srgb, var(--accent) 35%, var(--surface)); border-color: transparent; }
 .cover__slots i.all { background: var(--live); border-color: var(--live); }
+
+.cover__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  width: min(80%, 360px);
+}
+
+.cover__list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-2);
+}
+
+.cover__list li span:last-child { opacity: 0.7; }
+
+.cover__list li.hit { border-color: var(--accent); color: var(--ink); }
+.cover__list li.hit span:last-child { color: var(--accent); opacity: 1; }
+
+.cover__route { width: min(86%, 380px); height: auto; overflow: visible; }
+
+.cover__route .road {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.cover__route .stop { fill: var(--accent); }
+.cover__route .rest { fill: var(--surface); stroke: var(--accent-2); stroke-width: 2; }
+
+.cover__route text {
+  fill: var(--ink-2);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-anchor: middle;
+}
 
 .cover__rents {
   display: grid;

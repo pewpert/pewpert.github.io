@@ -90,7 +90,14 @@
               <span class="status">Delivered</span>
             </div>
             <div class="parcel__shot">
-              <img src="img/gebiz-tender-portal.png" alt="GeBIZ tender portal search results" loading="lazy" />
+              <div class="cover" aria-hidden="true">
+                <ul class="cover__list">
+                  <li class="hit"><span>Warehousing services</span><span>Match</span></li>
+                  <li><span>Office cleaning</span><span>Skip</span></li>
+                  <li class="hit"><span>Freight and delivery</span><span>Match</span></li>
+                  <li><span>IT hardware supply</span><span>Skip</span></li>
+                </ul>
+              </div>
             </div>
             <div class="parcel__body">
               <h3 class="parcel__title"><a href="projects/tender-webscraper.html">Tender Webscraper</a></h3>
@@ -116,7 +123,19 @@
               <span class="status">In development</span>
             </div>
             <div class="parcel__shot">
-              <img src="img/japan-trip-planner-routes.png" alt="Route planner showing a map of Japan and pre-built motorcycle routes" loading="lazy" />
+              <div class="cover" aria-hidden="true">
+                <svg class="cover__route" viewBox="0 0 360 140">
+                  <path class="road" d="M24 108 C 70 96, 84 46, 132 52 S 196 104, 236 82 S 300 28, 336 34" />
+                  <circle class="stop" cx="24" cy="108" r="6" />
+                  <circle class="rest" cx="132" cy="52" r="5" />
+                  <circle class="rest" cx="236" cy="82" r="5" />
+                  <circle class="stop" cx="336" cy="34" r="6" />
+                  <text x="24" y="130">Tokyo</text>
+                  <text x="132" y="38">Rest · 2h</text>
+                  <text x="236" y="108">Rest · 4h</text>
+                  <text x="336" y="20">Nikko</text>
+                </svg>
+              </div>
             </div>
             <div class="parcel__body">
               <h3 class="parcel__title"><a href="projects/japan-trip-planner.html">Motorbike Route Planner</a></h3>
