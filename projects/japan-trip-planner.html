@@ -2,149 +2,139 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Motorbike Route Planner — Daniel Chew</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=Martian+Mono:wdth,wght@75..112.5,400..600&display=swap" />
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/project.css" />
 </head>
-<body class="theme-blue">
+<body>
 
-  <a href="../index.html" class="back-link">
-    <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M24 4H2M5 1L2 4l3 3" stroke="currentColor" stroke-width="1.2"/>
-    </svg>
-    <span>All Projects</span>
-  </a>
+  <header class="strip">
+    <div class="wrap strip__inner">
+      <a href="../index.html" class="strip__mark" aria-label="Daniel Chew, home">DC</a>
+      <nav class="strip__nav mono" aria-label="Sections">
+        <a href="../index.html#manifest">Projects</a>
+        <a href="https://linkedin.com/in/daniel-chew-yu" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
 
-  <article class="project-page">
-
-    <header class="project-header">
-      <div class="project-header__meta">
-        <span class="project-header__number">02</span>
-        <span class="project-header__category">Next.js · TypeScript · Claude API</span>
+  <main class="wrap">
+    <header class="case-head">
+      <a class="case-back mono" href="../index.html#manifest">
+        <svg viewBox="0 0 24 12" fill="none" aria-hidden="true"><path d="M24 6H3M7 1.5 2 6l5 4.5" stroke="currentColor" stroke-width="2"/></svg>
+        All projects
+      </a>
+      <div class="case-label">
+        <div class="label__band mono"><span>DC-26-MRP · 02 of 04</span><span>In development</span></div>
+        <div class="case-label__main">
+          <h1 class="case-title">Motorbike Route Planner</h1>
+          <p class="case-tagline">Idea to working MVP in a weekend with Claude Code, then a second pass months later to make it hold up on a phone, in the rain.</p>
+        </div>
+        <dl class="fields">
+          <div class="field"><dt>Period</dt><dd>Mar–Jul 2026</dd></div>
+          <div class="field"><dt>For</dt><dd>Riders touring rural Japan</dd></div>
+          <div class="field"><dt>AI partner</dt><dd>Claude Code</dd></div>
+          <div class="field"><dt>Stack</dt><dd>Next.js 15, TypeScript, Claude API</dd></div>
+        </dl>
       </div>
-      <h1 class="project-header__title">Motorbike<br />Route Planner</h1>
-      <p class="project-header__tagline">
-        Idea to working MVP in a single weekend — my first proper vibe-coding
-        sprint with Claude Code, and a lesson in what AI coding can (and can't)
-        guarantee.
-      </p>
-      <img src="../img/japan-trip-planner-routes.png" alt="Japan Bike Trip Planner app showing route planner interface with map of Japan and pre-built motorcycle routes" class="project-header__screenshot" />
+      <figure class="case-shot">
+        <img src="../img/japan-trip-planner-routes.png" alt="Route planner interface with a map of Japan and pre-built motorcycle routes" />
+        <figcaption class="mono">Route planner with the four curated seed routes</figcaption>
+      </figure>
     </header>
 
-    <!-- ── The What ── -->
-    <section class="project-section">
-      <h2 class="project-section__heading">The What</h2>
-      <div class="project-section__body">
-        <p>
-          A full-stack web app for planning multi-day motorcycle trips through
-          rural Japan. It combines Google Maps route planning with Claude-powered
-          itinerary generation — letting riders plot a route, set waypoints, and
-          receive a detailed day-by-day plan tailored to biker-friendly stops,
-          scenic roads, and practical logistics.
-        </p>
-        <p>
-          Key features include draggable waypoints, automatic rest-stop suggestions
-          every ~2 hours, a fuel and toll cost calculator, and four pre-built
-          routes (Nikko Ridge, Izu Peninsula, Japanese Alps, Kyushu Aso Caldera).
-          State persists across sessions via Zustand and localStorage.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── How It Was Built ── -->
-    <section class="project-section">
-      <h2 class="project-section__heading">How It Was Built</h2>
-      <div class="project-section__body">
-        <p>
-          After my experience using ChatGPT on the Tender Webscraper, I wanted
-          to push further. This project was built entirely with Claude Code over
-          a single weekend — going from a rough idea to a working Next.js app
-          with TypeScript, Google Maps integration, and live Claude API calls.
-        </p>
-        <p>
-          Where the scraper had been slow and iterative, this was fast and
-          conversational. I described features in plain English, and Claude Code
-          scaffolded the components, handled the API wiring, and suggested
-          architectural patterns I wouldn't have known to use. The speed was
-          genuinely exciting — it felt like having a senior engineer on call.
-        </p>
-        <p>
-          But shipping something this fast also raised real questions. Without
-          deep TypeScript or Next.js knowledge, I couldn't fully audit what was
-          generated. Were there security gaps in the API routes? Edge cases in
-          the state management? I trusted the output, but I was aware of how
-          much I was trusting.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── The Why ── -->
-    <section class="project-section">
-      <h2 class="project-section__heading">The Why</h2>
-      <div class="project-section__body">
-        <p>
-          Planning a motorcycle trip through rural Japan involves more moving parts
-          than a typical travel itinerary: road surfaces, fuel stop gaps on mountain
-          passes, biker-friendly guesthouses, seasonal closures. Generic travel
-          planners don't understand these constraints — and asking an AI for
-          recommendations without grounding it in real route data produces generic
-          advice.
-        </p>
-        <p>
-          This project was an excuse to explore what happens when you connect
-          Claude's reasoning to structured geographical data. Rather than asking
-          "recommend things near Nikko," the app passes the actual route geometry
-          and asks Claude to reason about it — producing suggestions that are
-          spatially coherent, not just topically related.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── What I Learned ── -->
-    <section class="project-section">
-      <h2 class="project-section__heading">What I Learned</h2>
-      <ul class="learning-list">
-        <li class="learning-list__item" data-n="01">
+    <article class="case-body">
+      <section class="case-section">
+        <h2><span class="mono">The what</span>A trip planner that knows about fuel gaps</h2>
+        <div class="prose">
           <p>
-            <strong>AI coding is fast but not free.</strong>
-            Claude Code got me to a working app in two days. But the
-            time I saved on writing code, I owe back on understanding it.
-            Shipping responsibly means learning to read and audit what's
-            generated, not just trusting that it works.
+            A web app for planning multi-day motorcycle trips through rural Japan. It combines
+            Google Maps routing with Claude-written itineraries: plot a route, drag the
+            waypoints, and get a day-by-day plan built around biker-friendly stops, scenic roads
+            and practical logistics.
           </p>
-        </li>
-        <li class="learning-list__item" data-n="02">
           <p>
-            <strong>Grounding AI in real data changes the quality ceiling.</strong>
-            Claude with a route geometry and a curated biker POI dataset produced
-            recommendations that were genuinely useful. The same prompts without
-            that context produced plausible-sounding but spatially incoherent
-            suggestions. Context is the product.
+            It suggests a rest stop roughly every two hours, estimates fuel, tolls and
+            accommodation for the whole trip, and ships with four curated routes: Nikko Ridge,
+            Izu Peninsula, the Japanese Alps and Kyushu's Aso Caldera. Since July it also shows
+            an Open-Meteo weather strip along the route, and the map collapses behind a toggle
+            on mobile so the itinerary stays readable.
           </p>
-        </li>
-        <li class="learning-list__item" data-n="03">
-          <p>
-            <strong>A weekend MVP reveals what a month of planning hides.</strong>
-            By shipping fast, I learned immediately which features users actually
-            cared about (the pre-built routes) and which they ignored (the custom
-            itinerary editor). Speed of feedback beats depth of specification.
-          </p>
-        </li>
-      </ul>
-    </section>
+        </div>
+      </section>
 
-    <footer class="project-footer">
-      <span class="project-footer__label">02 / 04</span>
-      <nav class="project-footer__nav">
-        <a href="tender-webscraper.html">← Previous Project</a>
-        <a href="tokyo-apartment-search.html">Next Project →</a>
-        <a href="../index.html">All Projects</a>
+      <section class="case-section">
+        <h2><span class="mono">The why</span>Generic planners don't ride</h2>
+        <div class="prose">
+          <p>
+            A motorcycle trip through rural Japan has more moving parts than a normal itinerary:
+            road surfaces, long gaps between fuel stops on mountain passes, guesthouses that
+            welcome bikers, seasonal closures. Ask an AI for recommendations without real route
+            data and you get generic advice.
+          </p>
+          <p>
+            So the app passes Claude the actual route geometry and a curated biker POI dataset,
+            and asks it to reason about that. The suggestions come back spatially coherent
+            instead of merely on-topic.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2><span class="mono">How it was built</span>Two very different passes</h2>
+        <div class="prose">
+          <p>
+            <b>March: the weekend sprint.</b> I built the first version with Claude Code in a
+            single weekend, from a rough idea to a working Next.js app with TypeScript, Google
+            Maps and live Claude API calls. I described features in plain English and Claude Code
+            scaffolded components, wired the APIs and suggested patterns I wouldn't have known to
+            use. By the end it had a POI layer, cost ranges, an hourly schedule, a day view and a
+            print-friendly export.
+          </p>
+          <p>
+            Shipping that fast left real questions. Without deep TypeScript or Next.js knowledge,
+            I couldn't fully audit what was generated. I trusted the output, and I knew how much
+            I was trusting.
+          </p>
+          <p>
+            <b>June–July: the second pass.</b> I came back with a written improvement brief
+            before touching any code. That pass added the weather strip, whole-trip costs, the
+            mobile map toggle and clearer error messages. It also cut route requests down to a
+            single Directions call per trip, and replaced the look with a Japanese travel-journal
+            design.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2><span class="mono">What I learned</span>Three lessons</h2>
+        <ol class="lessons">
+          <li data-n="01"><p><strong>AI coding is fast, but the time comes back later.</strong>Claude Code got me to a working app in two days. The time I saved writing code, I owed back in understanding it when I returned in June. Shipping responsibly means being able to read and audit what was generated.</p></li>
+          <li data-n="02"><p><strong>Grounding the model in real data raises the ceiling.</strong>Claude with route geometry and a curated POI dataset produced recommendations a rider could use. The same prompts without that context produced plausible-sounding stops in the wrong places. The context is the product.</p></li>
+          <li data-n="03"><p><strong>Write the brief before you ask for the change.</strong>The second pass went far better than the first because I wrote down what was wrong and what "done" looked like before starting. A clear brief is as useful to an AI pair as it is to a human engineer, and it's the same skill I use with clients.</p></li>
+        </ol>
+      </section>
+
+      <nav class="case-nav" aria-label="More projects">
+        <a href="tender-webscraper.html"><span class="mono">Previous · 01</span><b>Tender Webscraper</b></a>
+        <a href="tokyo-apartment-search.html"><span class="mono">Next · 03</span><b>Tokyo Apartment Search</b></a>
       </nav>
-    </footer>
+    </article>
+  </main>
 
-  </article>
+  <footer class="footer">
+    <div class="wrap footer__inner mono">
+      <span>© 2026 Daniel Chew</span>
+      <nav aria-label="Elsewhere">
+        <a href="https://linkedin.com/in/daniel-chew-yu" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/pewpert/Japan-Trip-Planner" target="_blank" rel="noopener">Source on GitHub</a>
+      </nav>
+    </div>
+  </footer>
 
 </body>
 </html>

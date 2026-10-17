@@ -2,172 +2,142 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Tokyo Apartment Search — Daniel Chew</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=Martian+Mono:wdth,wght@75..112.5,400..600&display=swap" />
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/project.css" />
 </head>
-<body class="theme-amber">
+<body>
 
-  <a href="../index.html" class="back-link">
-    <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M24 4H2M5 1L2 4l3 3" stroke="currentColor" stroke-width="1.2"/>
-    </svg>
-    <span>All Projects</span>
-  </a>
+  <header class="strip">
+    <div class="wrap strip__inner">
+      <a href="../index.html" class="strip__mark" aria-label="Daniel Chew, home">DC</a>
+      <nav class="strip__nav mono" aria-label="Sections">
+        <a href="../index.html#manifest">Projects</a>
+        <a href="https://linkedin.com/in/daniel-chew-yu" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
 
-  <article class="project-page">
-
-    <header class="project-header">
-      <div class="project-header__meta">
-        <span class="project-header__number">03</span>
-        <span class="project-header__category">FastAPI · Next.js · Playwright · Python</span>
+  <main class="wrap">
+    <header class="case-head">
+      <a class="case-back mono" href="../index.html#manifest">
+        <svg viewBox="0 0 24 12" fill="none" aria-hidden="true"><path d="M24 6H3M7 1.5 2 6l5 4.5" stroke="currentColor" stroke-width="2"/></svg>
+        All projects
+      </a>
+      <div class="case-label">
+        <div class="label__band mono"><span>DC-26-TAS · 03 of 04</span><span>Runs locally</span></div>
+        <div class="case-label__main">
+          <h1 class="case-title">Tokyo Apartment Search</h1>
+          <p class="case-tagline">A rental aggregator built for my own move to Tokyo, and a long lesson in why production scraping is an engineering discipline.</p>
+        </div>
+        <dl class="fields">
+          <div class="field"><dt>Period</dt><dd>Apr–Jul 2026</dd></div>
+          <div class="field"><dt>For</dt><dd>My own move to Tokyo</dd></div>
+          <div class="field"><dt>Scraping</dt><dd>Playwright + Firecrawl fallback</dd></div>
+          <div class="field"><dt>Stack</dt><dd>FastAPI, Celery, Postgres, Next.js</dd></div>
+        </dl>
       </div>
-      <h1 class="project-header__title">Tokyo<br />Apartment<br />Search</h1>
-      <p class="project-header__tagline">
-        A full-stack rental aggregator built for my own move to Tokyo — and a deep
-        lesson in why production scraping is an engineering discipline, not a weekend task.
-      </p>
     </header>
 
-    <!-- ── The What ── -->
-    <section class="project-section">
-      <h2 class="project-section__heading">The What</h2>
-      <div class="project-section__body">
-        <p>
-          A web application that aggregates Tokyo rental listings from three major
-          portals — Suumo, LIFULL HOME'S, and Chintai — based on user-specified
-          criteria: ward, rent range, room type, floor size, and walk time to station.
-        </p>
-        <p>
-          Users submit a search, the backend queues a Celery job, and a headless
-          Chromium browser (via Playwright) scrapes the portals in parallel. Results
-          pass through a filter pipeline, are stored in PostgreSQL, and displayed in
-          a sortable table in a Next.js frontend. A demo mode with five hardcoded
-          seed listings is live on Vercel — the full stack runs locally via Docker Compose.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── The Why ── -->
-    <section class="project-section">
-      <h2 class="project-section__heading">The Why</h2>
-      <div class="project-section__body">
-        <p>
-          I'm relocating to Tokyo in 2026. Japan's rental market is notoriously
-          difficult to navigate from abroad: listings are spread across competing
-          portals, UI is Japanese-only, and search filters don't translate cleanly
-          between sites. The same apartment can appear on three platforms with
-          slightly different prices and availability.
-        </p>
-        <p>
-          Generic apartment search tools don't understand Tokyo-specific constraints
-          — earthquake building standards (post-1981 new code), foreigner acceptance
-          policies, the gap between advertised rent and true move-in cost once
-          deposit, key money, and agency fees are added. I needed something that
-          could enforce my exact criteria across all three portals in one pass.
-        </p>
-        <p>
-          Building it myself also meant I'd understand the data. By the time the
-          scraper ran, I knew the Suginami/Nakano Marunouchi Line corridor was the
-          correct answer — not because an algorithm told me, but because I'd read
-          enough listings to see the pattern.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── How It Was Built ── -->
-    <section class="project-section">
-      <h2 class="project-section__heading">How It Was Built</h2>
-      <div class="project-section__body">
-        <p>
-          The scraping layer was the core challenge. Each portal has a different
-          HTML structure, pagination pattern, and anti-scraping posture. LIFULL
-          HOME'S and Chintai work with Playwright and realistic browser headers.
-          Suumo was harder — repeated test runs from a Docker container during
-          development triggered a temporary IP block. The code was correct; the
-          problem was behavioural. You can't brute-force scraper development
-          against a live site without consequences.
-        </p>
-        <p>
-          That experience pointed toward Firecrawl — a managed scraping API that
-          handles browser rendering, proxy rotation, and anti-bot measures as a
-          service. Rather than maintaining headless Chrome configuration and
-          fighting IP blocks, Firecrawl exposes a clean <code>scrape(url)</code>
-          function that returns structured markdown or HTML. The tradeoff is cost
-          per request versus the engineering overhead of doing it yourself.
-          Firecrawl is wired into the environment as the next implementation step.
-        </p>
-        <p>
-          The rest of the stack was more straightforward: FastAPI for the backend
-          API, Celery + Redis for async job queuing (so the frontend doesn't block
-          waiting for scrapes that can take 30–60 seconds), and PostgreSQL for
-          result storage. The full local environment runs as five Docker Compose
-          services. The Next.js frontend was rebuilt with a compact filter bar,
-          real-time debug panel showing per-source raw vs. filtered counts, and
-          a sortable listings table.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── What I Learned ── -->
-    <section class="project-section">
-      <h2 class="project-section__heading">What I Learned</h2>
-      <ul class="learning-list">
-        <li class="learning-list__item" data-n="01">
+    <article class="case-body">
+      <section class="case-section">
+        <h2><span class="mono">The what</span>Four portals, one search</h2>
+        <div class="prose">
           <p>
-            <strong>Scraping is a maintenance contract, not a one-time build.</strong>
-            Portal HTML structures change without notice. Suumo's Chintai URL
-            parameter format, Homes' ward codes, Chintai's table layout — all of
-            these required reverse-engineering from scratch. The working scrapers
-            today are one site update away from returning empty results. Structural
-            health checks that alert instead of silently failing are not optional.
+            A web app that searches Tokyo rentals across Suumo, LIFULL HOME'S, Chintai and
+            e-housing.jp at once. You set the ward, rent range, layout, size and walk time to the
+            station. The backend queues a Celery job, scrapes all four sources concurrently,
+            filters and de-duplicates the results, and stores them in Postgres for a sortable
+            table you can export to CSV.
           </p>
-        </li>
-        <li class="learning-list__item" data-n="02">
           <p>
-            <strong>Managed scraping APIs change the cost equation.</strong>
-            Playwright is powerful but operationally heavy — browser process
-            management, proxy configuration, IP reputation, and anti-bot cat-and-mouse
-            are all your problem. Firecrawl's <code>scrape()</code> function trades
-            per-request cost for all of that complexity. For a personal tool scraping
-            a few dozen pages a day, the managed approach is almost always the right call.
+            It then adds what the portals won't let you filter on. For the cheapest matches it
+            opens each detail page to read motorcycle and bicycle parking, whether foreigners are
+            accepted, and whether the building meets the post-1981 earthquake standard (新耐震).
+            Every listing also gets an offline commute estimate to Tokyo Station and Shinjuku.
           </p>
-        </li>
-        <li class="learning-list__item" data-n="03">
-          <p>
-            <strong>Async job queues change the UX problem.</strong>
-            A scrape that takes 45 seconds is fine — if the user isn't staring at
-            a loading spinner. Celery + Redis let the frontend submit, show a
-            "queued" state, and poll for results. The engineering overhead of
-            adding a job queue is real, but the alternative (synchronous scraping
-            behind a single API call) fails in production the moment a portal is slow.
-          </p>
-        </li>
-        <li class="learning-list__item" data-n="04">
-          <p>
-            <strong>Filter pipeline quality matters as much as data collection.</strong>
-            Chintai returned 112 raw listings for my base criteria — and zero after
-            filtering. The portal accepts rent parameters in the URL but doesn't
-            enforce them strictly; all filtering has to happen post-scrape.
-            A raw data pipeline that hands back unfiltered results isn't useful;
-            the value is in the enforcement layer, not the fetch layer.
-          </p>
-        </li>
-      </ul>
-    </section>
+        </div>
+        <div class="facts">
+          <div><b>4</b><span>rental portals searched in parallel</span></div>
+          <div><b>98</b><span>listings from one real base-case search</span></div>
+          <div><b>18</b><span>parser tests that run offline</span></div>
+        </div>
+      </section>
 
-    <footer class="project-footer">
-      <span class="project-footer__label">03 / 04</span>
-      <nav class="project-footer__nav">
-        <a href="japan-trip-planner.html">← Previous Project</a>
-        <a href="just-say-when.html">Next Project →</a>
-        <a href="../index.html">All Projects</a>
+      <section class="case-section">
+        <h2><span class="mono">The why</span>Renting in Tokyo from abroad</h2>
+        <div class="prose">
+          <p>
+            Japan's rental market is hard to navigate from Singapore. Listings are split across
+            competing portals, most of them Japanese-only, and their filters don't line up. The
+            same flat can appear on three sites at slightly different prices.
+          </p>
+          <p>
+            My criteria were specific: a 1LDK for ¥100,000–120,000, ten minutes' walk from a
+            station, under 40 minutes to Shinjuku, good access to Tokyo Station for the
+            Shinkansen north, and somewhere to park a motorcycle. No portal can filter on all of
+            that. Building the tool also meant I learned the market: by the time it ran, I knew
+            the Koenji and Shin-Koenji corridor was the answer.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2><span class="mono">How it was built</span>Live first, Firecrawl when blocked</h2>
+        <div class="prose">
+          <p>
+            Each portal has its own HTML, pagination and stance on scrapers. Early on, repeated
+            test runs against Suumo from a Docker container earned a temporary IP block. The code
+            was right; the behaviour wasn't. You can't brute-force scraper development against a
+            live site.
+          </p>
+          <p>
+            The fix became the architecture. Every scraper now fetches through one shared
+            <code>fetch_page()</code>: try the live site with Playwright first, check the page
+            with a per-site <code>is_blocked()</code> test, and only if it's blocked fall back to
+            Firecrawl's <code>scrape()</code> API, which handles rendering and proxies as a
+            service. Redis remembers which sites are blocking so the next run goes straight to
+            the fallback. Firecrawl costs money per request, so it only runs when it has to.
+          </p>
+          <p>
+            Around that: FastAPI for the API, Celery and Redis so a 45-second scrape doesn't
+            hold up the page, Alembic migrations so a new column no longer means wiping the
+            database, and a typed listing contract so no scraper can emit a malformed record.
+            The parsers take saved HTML, which is what lets the tests run offline.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2><span class="mono">What I learned</span>Four lessons</h2>
+        <ol class="lessons">
+          <li data-n="01"><p><strong>Scraping is a maintenance contract, not a one-time build.</strong>Portals change their markup without notice. Putting block detection and fallback in one shared function meant fixing it once instead of in four copies, and the per-site check turns a silent empty result into a visible block.</p></li>
+          <li data-n="02"><p><strong>Use a managed API as the fallback, not the default.</strong>Firecrawl removes the browser, proxy and anti-bot work, but charges per page. Live-first with a Firecrawl fallback gets most of the reliability for a fraction of the cost.</p></li>
+          <li data-n="03"><p><strong>Measure a clever feature before you keep it.</strong>I built a cross-source dedup that matched on station, rent, size and floor. On a real run it merged none of the duplicates it was meant to catch and wrongly collapsed 43 different flats. I removed it, and the same search went from 76 to 98 listings. Real cross-language dedup will need coordinates.</p></li>
+          <li data-n="04"><p><strong>The value is in what the portals don't filter.</strong>Rent and size are easy. Parking, earthquake standard and commute are what decide a flat, and they live on detail pages. It also showed which source to trust: Chintai's detail pages state motorcycle parking, while Suumo's usually only mention car parking.</p></li>
+        </ol>
+      </section>
+
+      <nav class="case-nav" aria-label="More projects">
+        <a href="japan-trip-planner.html"><span class="mono">Previous · 02</span><b>Motorbike Route Planner</b></a>
+        <a href="just-say-when.html"><span class="mono">Next · 04</span><b>just say when.</b></a>
       </nav>
-    </footer>
+    </article>
+  </main>
 
-  </article>
+  <footer class="footer">
+    <div class="wrap footer__inner mono">
+      <span>© 2026 Daniel Chew</span>
+      <nav aria-label="Elsewhere">
+        <a href="https://linkedin.com/in/daniel-chew-yu" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/pewpert/jubilant-eureka" target="_blank" rel="noopener">Source on GitHub</a>
+      </nav>
+    </div>
+  </footer>
 
 </body>
 </html>

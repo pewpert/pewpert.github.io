@@ -2,169 +2,149 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>just say when. — Daniel Chew</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=Martian+Mono:wdth,wght@75..112.5,400..600&display=swap" />
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/project.css" />
 </head>
-<body class="theme-cream">
+<body>
 
-  <a href="../index.html" class="back-link">
-    <svg viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M24 4H2M5 1L2 4l3 3" stroke="currentColor" stroke-width="1.2"/>
-    </svg>
-    <span>All Projects</span>
-  </a>
+  <header class="strip">
+    <div class="wrap strip__inner">
+      <a href="../index.html" class="strip__mark" aria-label="Daniel Chew, home">DC</a>
+      <nav class="strip__nav mono" aria-label="Sections">
+        <a href="../index.html#manifest">Projects</a>
+        <a href="https://linkedin.com/in/daniel-chew-yu" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
 
-  <article class="project-page">
-
-    <header class="project-header">
-      <div class="project-header__meta">
-        <span class="project-header__number">04</span>
-        <span class="project-header__category">Vanilla JS · Firebase · No-framework</span>
+  <main class="wrap">
+    <header class="case-head">
+      <a class="case-back mono" href="../index.html#manifest">
+        <svg viewBox="0 0 24 12" fill="none" aria-hidden="true"><path d="M24 6H3M7 1.5 2 6l5 4.5" stroke="currentColor" stroke-width="2"/></svg>
+        All projects
+      </a>
+      <div class="case-label">
+        <div class="label__band mono"><span>DC-26-JSW · 04 of 04</span><span>Live</span></div>
+        <div class="case-label__main">
+          <h1 class="case-title">just say when.</h1>
+          <p class="case-tagline">The fastest way for a group to pick a time everyone can make. Solo-built, no framework, free to run.</p>
+          <div><a class="btn btn--solid" href="https://justsaywhen-f70e5.web.app" target="_blank" rel="noopener">Open the app</a></div>
+        </div>
+        <dl class="fields">
+          <div class="field"><dt>Build</dt><dd>2–3 weeks of evenings</dd></div>
+          <div class="field"><dt>Role</dt><dd>Design, code, deploy</dd></div>
+          <div class="field"><dt>Cost to run</dt><dd>$0, Firebase free tier</dd></div>
+          <div class="field"><dt>Stack</dt><dd>Vanilla JS, Firebase</dd></div>
+        </dl>
       </div>
-      <h1 class="project-header__title">just say when.</h1>
-      <p class="project-header__tagline">
-        The fastest way to pick a time everyone can make — solo-built, zero
-        dependencies, free to run, and actually shipped.
-      </p>
     </header>
 
-    <!-- ── The What ── -->
-    <section class="project-section">
-      <h2 class="project-section__heading">The What</h2>
-      <div class="project-section__body">
-        <p>
-          A group scheduling app. Each person marks when they're free — either
-          in Basic mode (Morning / Afternoon / Evening per day, one tap) or
-          Advanced mode (drag-paint 30-minute slots). The app surfaces the slots
-          where everyone overlaps and highlights the match with a green banner:
-          <em>"You all found a time."</em>
-        </p>
-        <p>
-          Built with plain HTML, CSS, and vanilla JavaScript — no framework, no
-          build step. Firebase handles auth (Google + anonymous guest sign-in),
-          real-time sync via Firestore <code>onSnapshot</code>, and hosting.
-          Total payload is ~280 KB. Cost to run: $0 on Firebase's free tier,
-          comfortably supporting 300–500 active users.
-        </p>
-        <p>
-          Live at <a href="https://justsaywhen-f70e5.web.app" target="_blank" rel="noopener" style="color:var(--accent)">justsaywhen-f70e5.web.app</a> — currently being shared with friends.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── The Why ── -->
-    <section class="project-section">
-      <h2 class="project-section__heading">The Why</h2>
-      <div class="project-section__body">
-        <p>
-          Coordinating a meetup with three or more people in a group chat is a
-          multi-hour ordeal. Someone suggests a time, someone can't make it,
-          alternatives get proposed, people lose track, the question gets
-          re-asked the following week. Existing tools like Doodle and When2Meet
-          solve the problem but feel dated, are clunky on phones, and ask
-          everyone to create an account they don't want.
-        </p>
-        <p>
-          The design goal was friction-to-zero: share a 6-character code or a
-          link, tap your free slots, see the overlap. No account required to
-          respond. No installation. Nothing to remember next time. One job, done.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── How It Was Built ── -->
-    <section class="project-section">
-      <h2 class="project-section__heading">How It Was Built</h2>
-      <div class="project-section__body">
-        <p>
-          Two to three weeks of evenings, iterative. The deliberate choice to
-          skip frameworks was partly a constraint — to genuinely understand what
-          I was writing — and partly a product decision. No build step means
-          anyone can open DevTools and read the source directly. Loads in under
-          one second on cable.
-        </p>
-        <p>
-          The single hardest engineering problem was the mobile interaction model.
-          The first version used drag-to-paint across availability cells. It felt
-          fast — until it silently corrupted data. iOS Safari fires synthetic
-          <code>mousedown</code> events roughly 300ms after <code>touchend</code>,
-          which was toggling cells back off after users had toggled them on. The
-          fix required three iterations: the shipped version uses a tap-arming
-          pattern with a movement threshold and a 500ms synthetic-event guard to
-          suppress the Safari compatibility events entirely.
-        </p>
-        <p>
-          A timezone bug caught in QA was the other near-miss. The day-range
-          iterator was using <code>toISOString().slice(0,10)</code> — which silently
-          shifts dates back one day for any user east of UTC. Every meetup in
-          Asia-Pacific would have shown the wrong day. Replaced with a local-date
-          helper before launch.
-        </p>
-      </div>
-    </section>
-
-    <!-- ── What I Learned ── -->
-    <section class="project-section">
-      <h2 class="project-section__heading">What I Learned</h2>
-      <ul class="learning-list">
-        <li class="learning-list__item" data-n="01">
+    <article class="case-body">
+      <section class="case-section">
+        <h2><span class="mono">The what</span>Mark when you're free. See the overlap.</h2>
+        <div class="prose">
           <p>
-            <strong>Shipping to real users surfaces bugs no test suite catches.</strong>
-            Three rounds of self-directed QA found roughly 20 bugs ranging from
-            a P0 timezone day-shift that would have broken every Asian user, to
-            a P0 mobile data-corruption issue, to P3 UI polish. The bugs that
-            matter most are the silent ones — the ones where users think the app
-            worked and it didn't.
+            A group scheduling app. Anyone creates a group and shares a six-character invite
+            code. Each person marks when they're free, either in Basic mode (morning, afternoon
+            or evening, one tap per day) or Advanced mode (30-minute slots). The app shows the
+            overlap as a heatmap and turns the banner green when everyone matches:
+            "You all found a time."
           </p>
-        </li>
-        <li class="learning-list__item" data-n="02">
           <p>
-            <strong>Anonymous auth removes the biggest source of drop-off.</strong>
-            Every scheduling app loses users at the "create an account" step.
-            Firebase Anonymous Auth lets any invitee tap "Continue as guest",
-            enter a name, and immediately respond — no email, no password, no
-            promise to remember a login. They can promote to a Google account
-            later if they want their data across devices. Removing that barrier
-            was a product decision that mattered more than any feature.
+            If someone hasn't answered, the banner says so by name. That small nudge does a lot
+            of the work of getting everyone to respond.
           </p>
-        </li>
-        <li class="learning-list__item" data-n="03">
-          <p>
-            <strong>Platform inconsistencies are bugs you didn't write.</strong>
-            The iOS Safari synthetic-event issue wasn't in my code. Neither was
-            the scroll-position loss during Firestore snapshot re-renders, which
-            required a <code>requestAnimationFrame</code> two-phase restore with
-            a forced layout recalculation. Mobile browsers have a long memory of
-            their own opinions about how touch and scroll should work. Testing
-            on real devices, not just DevTools emulation, is non-negotiable.
-          </p>
-        </li>
-        <li class="learning-list__item" data-n="04">
-          <p>
-            <strong>No-framework is a valid choice — but you inherit the work.</strong>
-            Vanilla JS meant I wrote my own state management, my own DOM diffing
-            workaround, my own event delegation. The app is fast and small and
-            easy to read. It is also mine in a way that a React app with 200
-            dependencies would not be. The tradeoff is real: I understand every
-            line, which made debugging faster — and also meant there was nobody
-            else's abstraction to blame when something broke.
-          </p>
-        </li>
-      </ul>
-    </section>
+        </div>
+        <div class="facts">
+          <div><b>~280 KB</b><span>first load, Firebase SDK included</span></div>
+          <div><b>~3,000</b><span>lines of hand-written JS and CSS</span></div>
+          <div><b>~20</b><span>bugs caught across three QA rounds</span></div>
+        </div>
+      </section>
 
-    <footer class="project-footer">
-      <span class="project-footer__label">04 / 04</span>
-      <nav class="project-footer__nav">
-        <a href="tokyo-apartment-search.html">← Previous Project</a>
-        <a href="../index.html">All Projects</a>
+      <section class="case-section">
+        <h2><span class="mono">The why</span>"When's good?" in the group chat</h2>
+        <div class="prose">
+          <p>
+            Picking a time with three or more people in a group chat takes hours. Someone
+            proposes Thursday, someone can't, Saturday morning gets suggested, someone has plans
+            until three, and the question gets asked again next week.
+          </p>
+          <p>
+            Doodle and When2Meet solve this but feel dated, are awkward on phones, and ask
+            everyone to sign up. My goal was to remove every step that isn't marking your time:
+            share a code, tap your slots, see the overlap.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2><span class="mono">How it was built</span>Six product decisions</h2>
+        <div class="prose">
+          <p>
+            <b>Two modes, chosen per meetup.</b> Basic for dinners and brunches, simple enough for
+            older relatives. Advanced for offsites and work meetings. Same data underneath.
+          </p>
+          <p>
+            <b>Guest sign-in next to Google.</b> Invitees tap "Continue as guest", type a name and
+            they're in, using Firebase Anonymous Auth. They can upgrade to a Google account later
+            to keep their groups across devices. This removed the biggest source of drop-off.
+          </p>
+          <p>
+            <b>Tap to toggle, drag to scroll.</b> The first version used drag-to-paint on touch,
+            and it quietly corrupted data: iOS Safari fires a synthetic <code>mousedown</code>
+            about 300ms after <code>touchend</code>, which flipped cells back off. It took three
+            iterations to fix. The shipped version arms a tap, checks a movement threshold, and
+            ignores synthetic mouse events for 500ms.
+          </p>
+          <p>
+            <b>Live updates.</b> Firestore <code>onSnapshot</code> listeners mean everyone sees
+            each other's availability appear without refreshing. A per-user membership index
+            avoids collection-group queries and the composite indexes they need.
+          </p>
+          <p>
+            <b>Rules enforced on the server.</b> Firestore security rules lock every meetup field
+            except the agenda to its creator, so the protection holds even if someone bypasses
+            the UI. Deleting a group cleans up its leftover documents safely.
+          </p>
+          <p>
+            <b>No build step.</b> Plain ES modules loaded directly. It loads in under a second
+            on cable and under three on 3G.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2><span class="mono">What I learned</span>Four lessons</h2>
+        <ol class="lessons">
+          <li data-n="01"><p><strong>The bugs that matter are the silent ones.</strong>Three rounds of QA caught about 20 bugs. The worst was a date helper using <code>toISOString().slice(0,10)</code>, which shifts every date back a day for anyone east of UTC. Every meetup in Singapore and Tokyo would have shown the wrong day, and nothing would have looked broken.</p></li>
+          <li data-n="02"><p><strong>Removing sign-up mattered more than any feature.</strong>Every scheduling tool loses people at "create an account". Letting guests in with just a name fixed that, and the upgrade path keeps the option open for people who want it.</p></li>
+          <li data-n="03"><p><strong>Test on real phones.</strong>The Safari tap bug and a scroll-position jump during live updates never showed up in desktop emulation. Mobile browsers have their own ideas about touch and scroll, and only a real device shows them.</p></li>
+          <li data-n="04"><p><strong>No framework means you own every line.</strong>I wrote my own state handling and event delegation. The app is small and fast and I understand all of it, which made debugging quicker. The trade-off is that there was no one else's abstraction to lean on when something broke.</p></li>
+        </ol>
+      </section>
+
+      <nav class="case-nav" aria-label="More projects">
+        <a href="tokyo-apartment-search.html"><span class="mono">Previous · 03</span><b>Tokyo Apartment Search</b></a>
+        <a href="../index.html#onward"><span class="mono">What's next</span><b>Onward leg</b></a>
       </nav>
-    </footer>
+    </article>
+  </main>
 
-  </article>
+  <footer class="footer">
+    <div class="wrap footer__inner mono">
+      <span>© 2026 Daniel Chew</span>
+      <nav aria-label="Elsewhere">
+        <a href="https://linkedin.com/in/daniel-chew-yu" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://justsaywhen-f70e5.web.app" target="_blank" rel="noopener">Open the app</a>
+      </nav>
+    </div>
+  </footer>
 
 </body>
 </html>

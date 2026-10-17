@@ -1,97 +1,32 @@
-/**
- * Scroll-snap dot navigation + horizontal project carousel
- */
+// Draws the decorative barcode on the consignee label from a fixed code,
+// so it renders the same on every visit.
 (function () {
-  'use strict';
+  const svg = document.getElementById('barcode');
+  if (!svg) return;
 
-  const sections     = document.querySelectorAll('.section');
-  const dots         = document.querySelectorAll('.dot-nav__dot');
-  const carousel     = document.getElementById('projects-carousel');
-  const cards        = carousel ? Array.from(carousel.querySelectorAll('.project-card')) : [];
-  const carouselDots = Array.from(document.querySelectorAll('.carousel-dot'));
+  const code = 'DC-SIN-TYO-2026';
+  const ns = 'http://www.w3.org/2000/svg';
+  const width = 300;
+  let x = 0;
+  let seed = 0;
+  for (const ch of code) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
 
-  let currentIdx  = 0; // vertical section index
-  let currentCard = 0; // horizontal card index
+  const next = () => {
+    seed = (seed * 1103515245 + 12345) >>> 0;
+    return seed / 4294967296;
+  };
 
-  /* ── Section dot nav ── */
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const idx = parseInt(entry.target.dataset.index, 10);
-          currentIdx = idx;
-          dots.forEach((d) => d.classList.remove('is-active'));
-          if (dots[idx]) dots[idx].classList.add('is-active');
-          // Reveal the active project card when projects section enters view
-          if (idx === 1) revealCard(currentCard);
-        }
-      });
-    },
-    { threshold: 0.55 }
-  );
-  sections.forEach((s) => sectionObserver.observe(s));
-
-  dots.forEach((dot) => {
-    dot.addEventListener('click', () => {
-      const target = document.querySelector(`.section[data-index="${dot.dataset.target}"]`);
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-
-  /* ── Carousel ── */
-  function revealCard(idx) {
-    cards.forEach((c, i) => {
-      if (i === idx && !c.classList.contains('is-visible')) {
-        c.classList.add('is-visible');
-      }
-    });
+  while (x < width) {
+    const bar = 1 + Math.floor(next() * 4);
+    const gap = 1 + Math.floor(next() * 3);
+    if (x + bar > width) break;
+    const rect = document.createElementNS(ns, 'rect');
+    rect.setAttribute('x', x);
+    rect.setAttribute('y', 0);
+    rect.setAttribute('width', bar);
+    rect.setAttribute('height', 54);
+    rect.setAttribute('fill', 'currentColor');
+    svg.appendChild(rect);
+    x += bar + gap;
   }
-
-  function goToCard(idx) {
-    if (!cards.length) return;
-    currentCard = Math.max(0, Math.min(idx, cards.length - 1));
-    cards[currentCard].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-    carouselDots.forEach((d, i) => d.classList.toggle('is-active', i === currentCard));
-    revealCard(currentCard);
-  }
-
-  document.getElementById('carousel-prev')?.addEventListener('click', () => goToCard(currentCard - 1));
-  document.getElementById('carousel-next')?.addEventListener('click', () => goToCard(currentCard + 1));
-
-  carouselDots.forEach((dot) => {
-    dot.addEventListener('click', () => goToCard(parseInt(dot.dataset.slide, 10)));
-  });
-
-  // Keep currentCard in sync when user swipes/scrolls carousel manually
-  if (carousel) {
-    carousel.addEventListener('scroll', () => {
-      const newCard = Math.round(carousel.scrollLeft / carousel.offsetWidth);
-      if (newCard !== currentCard) {
-        currentCard = newCard;
-        carouselDots.forEach((d, i) => d.classList.toggle('is-active', i === currentCard));
-        revealCard(currentCard);
-      }
-    }, { passive: true });
-  }
-
-  /* ── Keyboard navigation ── */
-  document.addEventListener('keydown', (e) => {
-    const total = sections.length;
-
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      currentIdx = Math.min(currentIdx + 1, total - 1);
-      sections[currentIdx].scrollIntoView({ behavior: 'smooth' });
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      currentIdx = Math.max(currentIdx - 1, 0);
-      sections[currentIdx].scrollIntoView({ behavior: 'smooth' });
-    } else if (e.key === 'ArrowRight' && currentIdx === 1) {
-      e.preventDefault();
-      goToCard(currentCard + 1);
-    } else if (e.key === 'ArrowLeft' && currentIdx === 1) {
-      e.preventDefault();
-      goToCard(currentCard - 1);
-    }
-  });
 })();
